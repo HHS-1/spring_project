@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 public class webController {
 
 	PrintWriter pw = null;
-	
+	public void test() {
+		System.out.println("test");
+	}
 	
 }
