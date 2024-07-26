@@ -38,6 +38,7 @@ public class webController {
 	public String ajaxok2(@RequestBody all_data_dto all_data) {
 		 System.out.println(all_data.getAll_data());
 		 System.out.println(all_data.getHa());
+		 System.out.println("test");
 		 return null;
 	}
 	
