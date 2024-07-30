@@ -28,7 +28,7 @@ document.querySelector("#btn_adminSignup").addEventListener("click", ()=>{
 	for(let a = 0 ; a < key.length ; a++){
 		data[key[a]] = document.querySelector("#"+key[a]).value;
 	}
-	console.log(data);
+
 	fetch("./signup",{
 		method : "POST",
 		headers : {
