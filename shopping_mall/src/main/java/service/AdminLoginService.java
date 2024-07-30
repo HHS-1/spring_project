@@ -9,8 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import dto.AdminLoginDto;
-import io.jsonwebtoken.Jwts;
-import model.Admin;
+import jwt.JwtUtil;
 import mybatis.AdminMapper;
 
 @Service
@@ -18,6 +17,9 @@ public class AdminLoginService {
 
 	@Autowired
 	private AdminMapper adminMapper;
+	@Autowired
+	private JwtUtil jwtUtil; 
+	
 	private PasswordEncoder passwordEncoder;
 
 	// admin 로그인 Service;
@@ -36,7 +38,9 @@ public class AdminLoginService {
 		}else if(!passwordEncoder.matches(login_pw, saved_pw)) { 
 			return ResponseEntity.status(434).body("비밀번호 틀림"); 
 		}else {
-			return ResponseEntity.ok("로그인 성공"); 
+			
+			String token = jwtUtil.createToken(loginInfo.getAdmin_id(), permission);
+			return ResponseEntity.ok(token); 
 		}
 		
 	}

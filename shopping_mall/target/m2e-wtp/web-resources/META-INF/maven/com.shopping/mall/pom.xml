@@ -15,6 +15,18 @@
 	</properties>
 	<dependencies>
 	
+		<!-- XML 파싱 라이브러리 -->
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    <version>2.3.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jaxb</groupId>
+		    <artifactId>jaxb-runtime</artifactId>
+		    <version>2.3.1</version>
+		</dependency>
+		
 		
 		<!-- jwt라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->

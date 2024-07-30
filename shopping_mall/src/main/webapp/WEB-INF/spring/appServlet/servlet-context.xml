@@ -23,6 +23,7 @@
 	<resources mapping="/ico/**" location="/static/ico/" />
 	<resources mapping="/upload/**" location="/upload/" />
 	<resources mapping="/product/**" location="/product/" />
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -30,7 +31,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="controller, service, model, dto" />
+	<context:component-scan base-package="controller, service, model, dto, jwt" />
     
     <!-- MyBatis 매퍼 스캔 -->
     <mybatis-spring:scan base-package="mybatis" />
