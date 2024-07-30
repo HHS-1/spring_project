@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -47,23 +48,31 @@
         <li>가입일자</li>
         <li>승인여부</li>
     </ol>
+    <c:if test="${adminInfo == null}">
     <ol class="new_admin_none">
         <li>신규 등록된 관리자가 없습니다.</li>
     </ol>
+    </c:if>
+    <c:forEach var="adminInfo" items="${adminInfo}" varStatus="status">
     <ol class="new_admin_lists2">
-        <li>1</li>
-        <li>한석봉</li>
-        <li>hansbong</li>
-        <li>01012345678</li>
-        <li>hansbong@hanmail.net</li>
-        <li>디자인팀</li>
-        <li>주임</li>
-        <li>2024-07-29</li>
+        <li>${status.index + 1}</li>
+        <li>${adminInfo.admin_name}</li>
+        <li>${adminInfo.admin_id}</li>
+        <li>${adminInfo.admin_tel}</li>
+        <li>${adminInfo.admin_email}</li>
+        <li>${adminInfo.admin_part}</li>
+        <li>${adminInfo.admin_position}</li>
+        <li>${adminInfo.formatted_join_date}</li>
         <li>
+        <c:if test="${adminInfo.permission == 'Y'}">
             <input type="button" value="승인" class="new_addbtn1" title="승인">
+        </c:if>
+        <c:if test="${adminInfo.permission == 'N'}">
             <input type="button" value="미승인" class="new_addbtn2" title="미승인">
+        </c:if>
         </li>
     </ol>
+    </c:forEach>
 </section>
 <section></section>
 <section></section>

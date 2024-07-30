@@ -7,9 +7,16 @@
     </select>
     
 	<insert id="createAdminMapper">
-    INSERT INTO admin_info (admin_id, admin_pw, admin_name, admin_email, admin_tel, admin_part, admin_position)
-    VALUES (#{admin_id}, #{admin_pw}, #{admin_name}, #{admin_email}, #{admin_tel}, #{admin_part}, #{admin_position})
+	    INSERT INTO admin_info (admin_id, admin_pw, admin_name, admin_email, admin_tel, admin_part, admin_position, join_date)
+	    VALUES (#{admin_id}, #{admin_pw}, #{admin_name}, #{admin_email}, #{admin_tel}, #{admin_part}, #{admin_position}, now())
 	</insert>
 	
+	<select id="getAdminMapper" resultType="Map">
+		SELECT *, DATE_FORMAT(join_date, '%Y-%m-%d') AS formatted_join_date FROM admin_info WHERE admin_id != 'master';
+	</select>
+	
+	<select id="adminLoginMapper" parameterType="String" resultType="Map">
+		SELECT admin_pw, permission FROM admin_info WHERE admin_id = #{id}
+	</select>
     
 </mapper>

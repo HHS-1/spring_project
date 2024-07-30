@@ -8,12 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 등록 페이지</title>
     <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=4">
     <link rel="icon" href="../static/images/logo.png" sizes="128x128">
     <link rel="icon" href="../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
-    
 </head>
 <body>
     <header class="admin_title_add">
@@ -28,9 +27,9 @@
                 <input type="text" id="admin_id" class="add_input1" placeholder="생성할 관리자 아이디를 입력하세요">
                 <button type="button" id="btn_idCheck" class="btn_button">중복체크</button>
                 </li>
-                <li>
-                    <input type="text" id="admin_pw" class="add_input1" placeholder="접속할 패스워드를 입력하세요">
-                    <input type="text" id="admin_pw_check" class="add_input1" placeholder="동일한 패스워드를 입력하세요">
+                <li class="parent">
+                    <input type="password" id="admin_pw" class="add_input1" placeholder="접속할 패스워드를 입력하세요">
+                    <input type="password" id="admin_pw_check" class="add_input1" placeholder="동일한 패스워드를 입력하세요"><span id="pw_msg">비밀번호가 일치하지 않습니다.</span>
                 </li>
                 <li class="font_color1">관리자 기본정보 입력</li>
                 <li>
@@ -50,7 +49,7 @@
                 <li class="font_color1">관리자 담당부서 및 직책</li>
                 <li>
                     <select id="admin_part" class="add_select1">
-                        <option>담당자 부서를 선택하세요</option>
+                        <option value="">담당자 부서를 선택하세요</option>
                         <option>임원</option>
                         <option>전산팀</option>
                         <option>디자인팀</option>
@@ -58,7 +57,7 @@
                         <option>MD팀</option>
                     </select>
                     <select id="admin_position" class="add_select1">
-                        <option>담당자 직책을 선택하세요</option>
+                        <option value="">담당자 직책을 선택하세요</option>
                         <option>대표</option>
                         <option>부장</option>
                         <option>팀장</option>
@@ -81,5 +80,5 @@
         </div>
     </footer>
 </body>
-<script src="../static/js/admin.js"></script>
+<script src="../static/js/admin.js?v=1"></script>
 </html>

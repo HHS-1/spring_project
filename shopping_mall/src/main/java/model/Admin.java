@@ -8,7 +8,7 @@ import lombok.Setter;
 public class Admin {
 	
 	int idx_admin;
-	String admin_id,admin_pw,admin_name,admin_email,admin_tel,admin_part,admin_position,permission;
+	String admin_id,admin_pw,admin_name,admin_email,admin_tel,admin_part,admin_position,permission,join_date;
 	
 	public Admin() {}
 	

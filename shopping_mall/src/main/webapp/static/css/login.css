@@ -240,3 +240,15 @@
  .btncolor2 { 
     background-color: rgb(29, 29, 25);
  }
+ 
+ .parent{
+ 	position: relative;
+ }
+ #pw_msg{
+ 	position: absolute;
+ 	color : red;
+ 	right : 115px;
+ 	top : 2px;
+ 	font-size : 8px;
+ 	display: none;
+ }

@@ -13,8 +13,8 @@ import service.AdminSignupService;
 @Controller
 public class AdminSignupController {
 	
-	  @Autowired
-	  private AdminSignupService adminSignupService;
+	@Autowired
+	private AdminSignupService adminSignupService;
 	
 	//아이디 중복검사 컨트롤러
 	@GetMapping("/admin/id_check")
@@ -25,8 +25,6 @@ public class AdminSignupController {
 	//Admin 회원가입 컨트롤러
 	@PostMapping("/admin/signup")
 	public ResponseEntity<String> createAdmin(@RequestBody AdminSignupDto adminSignupDto){
-		adminSignupService.createAdminService(adminSignupDto);
-		
-		return null;
+		return adminSignupService.createAdminService(adminSignupDto);
 	}
 }
