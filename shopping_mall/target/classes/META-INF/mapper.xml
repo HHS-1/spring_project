@@ -18,5 +18,9 @@
 	<select id="adminLoginMapper" parameterType="String" resultType="Map">
 		SELECT admin_pw, permission FROM admin_info WHERE admin_id = #{id}
 	</select>
+	
+	<select id="getAdminDetail" parameterType="String" resultType="model.AdminAuthentication">
+		SELECT admin_id, admin_pw, permission FROM admin_info WHERE admin_id = #{id}
+	</select>
     
 </mapper>

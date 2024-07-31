@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AdminLoginService {
 	private PasswordEncoder passwordEncoder;
 
 	// admin 로그인 Service;
-	public ResponseEntity<String> adminLoginService(AdminLoginDto loginInfo) {
+	public ResponseEntity<?> adminLoginService(AdminLoginDto loginInfo) {
 		passwordEncoder = new BCryptPasswordEncoder();
 		Map<String, String> savedInfo = adminMapper.adminLoginMapper(loginInfo.getAdmin_id());
 
@@ -39,8 +40,12 @@ public class AdminLoginService {
 			return ResponseEntity.status(434).body("비밀번호 틀림"); 
 		}else {
 			
-			String token = jwtUtil.createToken(loginInfo.getAdmin_id(), permission);
-			return ResponseEntity.ok(token); 
+			String accessToken = jwtUtil.createAccessToken(loginInfo.getAdmin_id(), permission);
+			String refreshToken = jwtUtil.createRefreshToken(loginInfo.getAdmin_id());
+			Map<String,String> tokens = new HashMap<String, String>();
+			tokens.put("accessToken", accessToken);
+			tokens.put("refreshToken", refreshToken);	
+			return ResponseEntity.ok(tokens); 
 		}
 		
 	}

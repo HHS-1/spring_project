@@ -1,3 +1,9 @@
+//로그인
+document.querySelector("#login_frm").addEventListener("submit", event=>{
+	event.preventDefault();
+	login();
+});
+
 //로그인 fetch
 const login = function(){
 	const id = document.querySelector("#admin_id").value;
@@ -15,19 +21,35 @@ const login = function(){
 	})
 	.then(response => {
 		if(response.ok){
-			alert('로그인에 성공하셨습니다.')
+			return response.json();
 		}else if(response.status == 433){
-			alert('승인 처리중입니다.\n관련 문의는 보안팀(1644-5470)으로 해주시기 바랍니다.')
+			alert('미승인 관리자입니다.\n관련 문의는 보안팀(1644-5470)으로 해주시기 바랍니다.')
 		}else{
 			alert('아이디 또는 비밀번호를 확인해주세요');
 		}
+	})
+	.then(tokens=>{
+		console.log(tokens.accessToken);
+		saveToken(tokens.accessToken);
+		alert('로그인성공')
 	})
 	.catch(error=>{
 		console.log(error);
 	})
 }
 
-document.querySelector("#login_frm").addEventListener("submit", event=>{
-	event.preventDefault();
-	login();
-});
+//토큰 저장
+function saveToken(token) {
+    localStorage.setItem('accessToken', token);
+}
+
+// 토큰 get
+function getToken() {
+    return localStorage.getItem('accessToken');
+}
+
+// 토큰 삭제
+function removeToken() {
+    localStorage.removeItem('authToken');
+}
+

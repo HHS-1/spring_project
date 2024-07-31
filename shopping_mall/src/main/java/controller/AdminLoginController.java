@@ -17,7 +17,7 @@ public class AdminLoginController {
 	AdminLoginService loginService;
 	
 	@PostMapping("/admin/login/api")
-	public ResponseEntity<String> adminLogin(@RequestBody AdminLoginDto loginInfo) {
+	public ResponseEntity<?> adminLogin(@RequestBody AdminLoginDto loginInfo) {
 		return loginService.adminLoginService(loginInfo);
 	}
 }

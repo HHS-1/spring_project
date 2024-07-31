@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import dto.AdminLoginDto;
 import model.Admin;
+import model.AdminAuthentication;
 
 @Mapper
 public interface AdminMapper {
@@ -14,4 +15,5 @@ public interface AdminMapper {
 	int createAdminMapper(Admin admin);
 	List<Admin> getAdminMapper();
 	Map<String,String> adminLoginMapper(String id);
+	AdminAuthentication getAdminDetail(String id);
 }
