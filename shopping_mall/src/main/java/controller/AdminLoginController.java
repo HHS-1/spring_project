@@ -2,6 +2,8 @@ package controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ public class AdminLoginController {
 	AdminLoginService loginService;
 	
 	@PostMapping("/admin/login/api")
-	public ResponseEntity<?> adminLogin(@RequestBody AdminLoginDto loginInfo) {
-		return loginService.adminLoginService(loginInfo);
+	public ResponseEntity<String> adminLogin(@RequestBody AdminLoginDto loginInfo, HttpServletResponse res) {
+		return loginService.adminLoginService(loginInfo, res);
 	}
 }

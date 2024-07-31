@@ -1,7 +1,9 @@
 package service;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class AdminLoginService {
 	private PasswordEncoder passwordEncoder;
 
 	// admin 로그인 Service;
-	public ResponseEntity<?> adminLoginService(AdminLoginDto loginInfo) {
+	public ResponseEntity<String> adminLoginService(AdminLoginDto loginInfo, HttpServletResponse res) {
 		passwordEncoder = new BCryptPasswordEncoder();
 		Map<String, String> savedInfo = adminMapper.adminLoginMapper(loginInfo.getAdmin_id());
 
@@ -42,10 +44,15 @@ public class AdminLoginService {
 			
 			String accessToken = jwtUtil.createAccessToken(loginInfo.getAdmin_id(), permission);
 			String refreshToken = jwtUtil.createRefreshToken(loginInfo.getAdmin_id());
-			Map<String,String> tokens = new HashMap<String, String>();
-			tokens.put("accessToken", accessToken);
-			tokens.put("refreshToken", refreshToken);	
-			return ResponseEntity.ok(tokens); 
+			
+			//HttpOnly 쿠키에 refreshToken 저장
+			Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
+			refreshTokenCookie.setHttpOnly(true);
+			refreshTokenCookie.setPath("/");
+		    refreshTokenCookie.setMaxAge(1 * 24 * 60 * 60); 
+		    res.addCookie(refreshTokenCookie);
+		    
+			return ResponseEntity.ok(accessToken); 
 		}
 		
 	}

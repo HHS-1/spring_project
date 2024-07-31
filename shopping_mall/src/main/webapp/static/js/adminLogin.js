@@ -21,7 +21,7 @@ const login = function(){
 	})
 	.then(response => {
 		if(response.ok){
-			return response.json();
+			return response.text();
 		}else if(response.status == 433){
 			alert('미승인 관리자입니다.\n관련 문의는 보안팀(1644-5470)으로 해주시기 바랍니다.')
 		}else{
@@ -29,9 +29,9 @@ const login = function(){
 		}
 	})
 	.then(tokens=>{
-		console.log(tokens.accessToken);
 		saveToken(tokens.accessToken);
-		alert('로그인성공')
+		alert("로그인성공")
+		location="./list";
 	})
 	.catch(error=>{
 		console.log(error);

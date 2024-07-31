@@ -30,8 +30,10 @@ public class JwtUtil {
 	
 	//refresh토큰 생성
 	public String createRefreshToken(String id) {
+		Claims claims = Jwts.claims();
+		claims.put("id", id);
 		return Jwts.builder()
-				.setSubject(id)
+				.setClaims(claims)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis()+86400*1000*24))
 				.signWith(SignatureAlgorithm.HS512, secretKey)

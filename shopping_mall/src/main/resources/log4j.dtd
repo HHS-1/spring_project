@@ -1,0 +1,57 @@
+<!-- log4j.dtd -->
+<!-- Configuration for Log4j -->
+<!ELEMENT log4j:configuration (renderer*, appender*, plugin*, (category|logger)*, root?, (categoryFactory|loggerFactory)?)>
+<!ATTLIST log4j:configuration 
+    xmlns:log4j CDATA #FIXED "http://jakarta.apache.org/log4j/"
+    debug (true|false) "false"
+    threshold CDATA #IMPLIED
+    reset (true|false) "false">
+<!ELEMENT renderer EMPTY>
+<!ATTLIST renderer
+    renderingClass CDATA #REQUIRED
+    renderedClass CDATA #REQUIRED>
+<!ELEMENT appender (param*, (layout?, (errorHandler?, filter*)?)?, appender-ref*)>
+<!ATTLIST appender
+    name CDATA #REQUIRED
+    class CDATA #REQUIRED>
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+    name CDATA #REQUIRED
+    value CDATA #REQUIRED>
+<!ELEMENT layout (param*)>
+<!ATTLIST layout
+    class CDATA #REQUIRED>
+<!ELEMENT errorHandler (param*, appender-ref*)>
+<!ATTLIST errorHandler
+    class CDATA #REQUIRED>
+<!ELEMENT filter (param*)>
+<!ATTLIST filter
+    class CDATA #REQUIRED>
+<!ELEMENT category (param*, (priority|level)?, appender-ref*)>
+<!ATTLIST category
+    name CDATA #REQUIRED>
+<!ELEMENT priority EMPTY>
+<!ATTLIST priority
+    value CDATA #REQUIRED
+    class CDATA #IMPLIED>
+<!ELEMENT level EMPTY>
+<!ATTLIST level
+    value CDATA #REQUIRED
+    class CDATA #IMPLIED>
+<!ELEMENT root (param*, (priority|level)?, appender-ref*)>
+<!ELEMENT appender-ref EMPTY>
+<!ATTLIST appender-ref
+    ref CDATA #REQUIRED>
+<!ELEMENT categoryFactory (param*)>
+<!ATTLIST categoryFactory
+    class CDATA #REQUIRED>
+<!ELEMENT logger (param*, (priority|level)?, appender-ref*)>
+<!ATTLIST logger
+    name CDATA #REQUIRED>
+<!ELEMENT loggerFactory (param*)>
+<!ATTLIST loggerFactory
+    class CDATA #REQUIRED>
+<!ELEMENT plugin (param*)>
+<!ATTLIST plugin
+    name CDATA #REQUIRED
+    class CDATA #REQUIRED>
