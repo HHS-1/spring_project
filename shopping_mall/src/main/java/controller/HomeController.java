@@ -30,8 +30,14 @@ public class HomeController {
     @GetMapping("/admin/list")
     public String adminListPage(Model model, HttpServletRequest req) {
     	String refreshToken = CookieUtil.getCookie(req, "refreshToken");
+    	
     	String id = jwtUtil.getId(refreshToken);
-    	System.out.println("id :" +  id);
+    	String permission = jwtUtil.getPermission(refreshToken);
+    	String name = adminListService.getAdminNameService(id);
+    	
+    	model.addAttribute("userId",id);
+    	model.addAttribute("userName", name);
+    	model.addAttribute("permission",permission);
     	model.addAttribute("adminInfo",adminListService.getAdminService());
     	return "admin_list";
     }

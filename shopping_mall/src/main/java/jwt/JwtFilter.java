@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import utility.CookieUtil;
+
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -26,10 +28,15 @@ public class JwtFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)
 			throws ServletException, IOException {
-		
+		System.out.println("load filter");
 		final String authorization = req.getHeader("Authorization");
 		String userId = null;
 		String token = null;
+		String refreshToken = CookieUtil.getCookie(req, "refreshToken");
+		if(refreshToken == null || refreshToken.isEmpty() ||jwtUtil.isTokenExpired(refreshToken)) {
+			res.sendRedirect("/login/api");
+			return;
+		}
 		
 		if(authorization != null && authorization.startsWith("bearer ")) {
 			token = authorization.substring(7);

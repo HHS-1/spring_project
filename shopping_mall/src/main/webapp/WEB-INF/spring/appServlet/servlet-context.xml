@@ -31,7 +31,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="controller, service, model, dto, jwt, utility" />
+	<context:component-scan base-package="controller, service, model, dto, utility" />
+	
+	<context:annotation-config/>
+	<context:component-scan base-package=" jwt" />
     
     <!-- MyBatis 매퍼 스캔 -->
     <mybatis-spring:scan base-package="mybatis" />

@@ -17,4 +17,7 @@ public class AdminListService {
 		return adminMapper.getAdminMapper();
 	}
 	
+	public String getAdminNameService(String id) {
+		return adminMapper.getAdminNameMapper(id);
+	}
 }

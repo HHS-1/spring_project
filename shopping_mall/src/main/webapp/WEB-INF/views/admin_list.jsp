@@ -15,12 +15,13 @@
     <link rel="icon" href="../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
+    <script src="../static/js/adminList.js" defer></script>
 </head>
 <body>
 <header class="headercss">
     <div class="header_div">
         <p><img src="../static/images/logo.png" class="logo_sm"> ADMINISTRATOR</p>
-        <p>홍길동 관리자 <a href="#">[개인정보 수정]</a> <a href="#">[로그아웃]</a></p>
+        <p>${userName} 관리자 <a href="#">[개인정보 수정]</a> <a href="#">[로그아웃]</a></p>
     </div>
 </header>
 <nav class="navcss">
@@ -83,4 +84,5 @@
     </div>
 </footer>
 </body>
+
 </html>

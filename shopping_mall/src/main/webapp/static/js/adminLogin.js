@@ -28,10 +28,13 @@ const login = function(){
 			alert('아이디 또는 비밀번호를 확인해주세요');
 		}
 	})
-	.then(tokens=>{
-		saveToken(tokens.accessToken);
-		alert("로그인성공")
-		location="./list";
+	.then(token=>{
+		if(token){
+			console.log(token);
+			saveToken(token);
+			alert("로그인성공")	
+			location="./list";
+		}
 	})
 	.catch(error=>{
 		console.log(error);
@@ -40,16 +43,16 @@ const login = function(){
 
 //토큰 저장
 function saveToken(token) {
-    localStorage.setItem('accessToken', token);
+    sessionStorage.setItem('accessToken', token);
 }
 
 // 토큰 get
 function getToken() {
-    return localStorage.getItem('accessToken');
+    return sessionStorage.getItem('accessToken');
 }
 
 // 토큰 삭제
 function removeToken() {
-    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
 }
 

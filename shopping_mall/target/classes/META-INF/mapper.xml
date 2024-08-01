@@ -23,4 +23,7 @@
 		SELECT admin_id, admin_pw, permission FROM admin_info WHERE admin_id = #{id}
 	</select>
     
+    <select id="getAdminNameMapper" parameterType="String" resultType="String">
+    	SELECT admin_name FROM admin_info WHERE admin_id = #{id}
+    </select>
 </mapper>

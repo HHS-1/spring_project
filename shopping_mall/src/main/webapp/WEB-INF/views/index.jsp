@@ -49,5 +49,5 @@
         </div>
     </footer>
 </body>
-<script src="../static/js/adminLogin.js"></script>
+<script src="../static/js/adminLogin.js?v=1"></script>
 </html>

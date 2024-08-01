@@ -43,7 +43,7 @@ public class AdminLoginService {
 		}else {
 			
 			String accessToken = jwtUtil.createAccessToken(loginInfo.getAdmin_id(), permission);
-			String refreshToken = jwtUtil.createRefreshToken(loginInfo.getAdmin_id());
+			String refreshToken = jwtUtil.createRefreshToken(loginInfo.getAdmin_id(), permission);
 			
 			//HttpOnly 쿠키에 refreshToken 저장
 			Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);

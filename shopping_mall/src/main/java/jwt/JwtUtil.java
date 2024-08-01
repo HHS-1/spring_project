@@ -29,9 +29,10 @@ public class JwtUtil {
 	}
 	
 	//refresh토큰 생성
-	public String createRefreshToken(String id) {
+	public String createRefreshToken(String id, String permission) {
 		Claims claims = Jwts.claims();
 		claims.put("id", id);
+		claims.put("permission", permission);	
 		return Jwts.builder()
 				.setClaims(claims)
 				.setIssuedAt(new Date(System.currentTimeMillis()))

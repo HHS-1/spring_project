@@ -16,4 +16,5 @@ public interface AdminMapper {
 	List<Admin> getAdminMapper();
 	Map<String,String> adminLoginMapper(String id);
 	AdminAuthentication getAdminDetail(String id);
+	String getAdminNameMapper(String id);
 }
