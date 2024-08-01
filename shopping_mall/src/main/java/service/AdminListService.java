@@ -3,8 +3,10 @@ package service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import dto.AdminPermissionDto;
 import model.Admin;
 import mybatis.AdminMapper;
 
@@ -19,5 +21,13 @@ public class AdminListService {
 	
 	public String getAdminNameService(String id) {
 		return adminMapper.getAdminNameMapper(id);
+	}
+	
+	public ResponseEntity<String> modifyPermissionService(AdminPermissionDto adminPermissionDto){
+		if(adminMapper.modifyPermissionMapper(adminPermissionDto)>0) {
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.status(434).build();
+		}
 	}
 }

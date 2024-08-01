@@ -3,6 +3,7 @@ package service;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,10 @@ import org.springframework.stereotype.Service;
 import dto.AdminLoginDto;
 import jwt.JwtUtil;
 import mybatis.AdminMapper;
+import utility.CookieUtil;
 
 @Service
-public class AdminLoginService {
+public class AdminAuthService {
 
 	@Autowired
 	private AdminMapper adminMapper;
@@ -54,6 +56,13 @@ public class AdminLoginService {
 		    
 			return ResponseEntity.ok(accessToken); 
 		}
-		
+	}
+	
+	//admin 로그아웃 service
+	public String adminLogoutService(HttpServletResponse res, HttpServletRequest req){
+		CookieUtil.deleteCookie(res, "refreshToken", "/");
+		req.getSession().invalidate();
+	    
+		return "redirect:/admin/login";
 	}
 }

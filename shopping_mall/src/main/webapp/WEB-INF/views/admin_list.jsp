@@ -9,25 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 등록 페이지</title>
     <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=2">
     <link rel="stylesheet" type="text/css" href="../static/css/main.css?v=1">
     <link rel="icon" href="../static/images/logo.png" sizes="128x128">
     <link rel="icon" href="../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
-    <script src="../static/js/adminList.js" defer></script>
+    <script src="../static/js/adminList.js?v=2" defer></script>
 </head>
 <body>
 <header class="headercss">
     <div class="header_div">
         <p><img src="../static/images/logo.png" class="logo_sm"> ADMINISTRATOR</p>
-        <p>${userName} 관리자 <a href="#">[개인정보 수정]</a> <a href="#">[로그아웃]</a></p>
+        <p>${userName}님 <button class="btn_top">[개인정보 수정]</button> <button class="btn_top" id="btn_logout">[로그아웃]</button></p>
     </div>
 </header>
 <nav class="navcss">
     <div class="nav_div">
         <ol>
-            <li title="쇼핑몰 상품관리">쇼핑몰 관리자 리스트</li>
+        <c:if test="${permission.equals('M')}">
+            <li title="쇼핑몰 상품관리"><a href="./list">쇼핑몰 관리자 리스트</a></li>
+		</c:if>
             <li title="쇼핑몰 회원관리">쇼핑몰 회원관리</li>
             <li title="쇼핑몰 상품관리">쇼핑몰 상품관리</li>
             <li title="쇼핑몰 기본설정">쇼핑몰 기본설정</li>
@@ -66,10 +68,10 @@
         <li>${adminInfo.formatted_join_date}</li>
         <li>
         <c:if test="${adminInfo.permission == 'Y'}">
-            <input type="button" value="승인" class="new_addbtn1" title="승인">
+            <input admin="${adminInfo.idx_admin}" admin_name="${adminInfo.admin_name}" case="1" type="button" value="승인" class="new_addbtn1" title="승인" onclick="approveMod(this)">
         </c:if>
         <c:if test="${adminInfo.permission == 'N'}">
-            <input type="button" value="미승인" class="new_addbtn2" title="미승인">
+            <input admin="${adminInfo.idx_admin}" admin_name="${adminInfo.admin_name}" case="2" type="button" value="미승인" class="new_addbtn2" title="미승인" onclick="approveMod(this)">
         </c:if>
         </li>
     </ol>

@@ -26,4 +26,17 @@
     <select id="getAdminNameMapper" parameterType="String" resultType="String">
     	SELECT admin_name FROM admin_info WHERE admin_id = #{id}
     </select>
+    
+    <update id="modifyPermissionMapper">
+    	UPDATE admin_info SET permission=
+    	<choose>
+    	<when test="status==1">
+    		'N'
+    	</when>
+    	<when test="status==2">
+    		'Y'
+    	</when>
+    	</choose>
+    	 WHERE idx_admin=#{idx_admin} 
+    </update>
 </mapper>
