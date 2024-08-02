@@ -22,7 +22,6 @@ import utility.CookieUtil;
 
 
 @Slf4j
-@Component
 public class JwtFilter extends OncePerRequestFilter {
 	@Autowired
 	private CustomUserDetailsService adminDetailsService;

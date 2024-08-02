@@ -15,28 +15,11 @@
     <link rel="icon" href="../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
-    <script src="../static/js/adminList.js?v=2" defer></script>
+    <script src="../static/js/adminList.js?v=3" defer></script>
+    <script src="../static/js/common.js" defer></script>
 </head>
 <body>
-<header class="headercss">
-    <div class="header_div">
-        <p><img src="../static/images/logo.png" class="logo_sm"> ADMINISTRATOR</p>
-        <p>${userName}님 <button class="btn_top">[개인정보 수정]</button> <button class="btn_top" id="btn_logout">[로그아웃]</button></p>
-    </div>
-</header>
-<nav class="navcss">
-    <div class="nav_div">
-        <ol>
-        <c:if test="${permission.equals('M')}">
-            <li title="쇼핑몰 상품관리"><a href="./list">쇼핑몰 관리자 리스트</a></li>
-		</c:if>
-            <li title="쇼핑몰 회원관리">쇼핑몰 회원관리</li>
-            <li title="쇼핑몰 상품관리">쇼핑몰 상품관리</li>
-            <li title="쇼핑몰 기본설정">쇼핑몰 기본설정</li>
-        </ol>
-    </div>
-
-</nav>
+<%@ include file="./header.jsp" %> 
 <main class="maincss">
 <section>
     <p>신규등록 관리자</p>

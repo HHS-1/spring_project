@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import jwt.JwtFilter;
 import jwt.JwtUtil;
 import service.AdminListService;
+import service.CommonService;
 import utility.CookieUtil;
 
 @Controller
@@ -28,38 +29,35 @@ public class HomeController {
 	@Autowired
 	private AdminListService adminListService;
 	@Autowired
-	private JwtUtil jwtUtil;
+	private CommonService commonService;
 	@Autowired
-	private JwtFilter jwtFilter;
+	private JwtUtil jwtUtil;
+
     @GetMapping("/admin/login")
-    public String adminLoginPage() {
+    public String adminLoginPage(HttpServletResponse response) {
+    	response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
         return "index";
     }
     
     @GetMapping("/admin/list")
     public String adminListPage(Model model, HttpServletRequest req) throws ServletException, IOException {
-    	    	
-    	String refreshToken = CookieUtil.getCookie(req, "refreshToken");
-    	if(refreshToken == null || refreshToken.isEmpty() ||jwtUtil.isTokenExpired(refreshToken)) {
-			return "redirect:/admin/login";
-		}else if(!jwtUtil.getPermission(refreshToken).equals("M")) {
-			return "403";
-		}
-    
-    	String id = jwtUtil.getId(refreshToken);
-    	String permission = jwtUtil.getPermission(refreshToken);
-    	String name = adminListService.getAdminNameService(id);
-    	
-    	model.addAttribute("userId",id);
-    	model.addAttribute("userName", name);
-    	model.addAttribute("permission",permission);
+    	String path = "admin_list";
     	model.addAttribute("adminInfo",adminListService.getAdminService());
-    	return "admin_list";
+    	return commonService.verify(req,model,path);
     }
     
     @GetMapping("/admin/add")
     public String adminAddPage() {
         return "add_master";
+    }
+    
+    @GetMapping("/admin/setting/shop")
+    public String shopSettingPage(Model model, HttpServletRequest req) {
+    	String path = "admin_siteinfo";
+    	model.addAttribute("adminInfo",adminListService.getAdminService());
+    	return commonService.verify(req,model,path);
     }
     
     @GetMapping("/admin/test")

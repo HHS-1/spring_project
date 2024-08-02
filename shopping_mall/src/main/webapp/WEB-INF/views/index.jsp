@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
     <title>관리자 페이지</title>
     <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="../static/css/mainlogin.css?v=3">
@@ -25,8 +28,8 @@
             <span>
                 <div class="left_div">
                 <ul>
-                <li><input type="text" id="admin_id" class="input_text1" placeholder="관리자 아이디를 입력하세요"></li>
-                <li><input type="password" id="admin_pw" class="input_text1" placeholder="관리자 패스워드를 입력하세요"></li>
+                <li><input type="text" id="admin_id" autocomplete="off" class="input_text1" placeholder="관리자 아이디를 입력하세요"></li>
+                <li><input type="password" id="admin_pw" autocomplete="off" class="input_text1" placeholder="관리자 패스워드를 입력하세요"></li>
                 </ul>
                 </div>
                 <div class="right_div">

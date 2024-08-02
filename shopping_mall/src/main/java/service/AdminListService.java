@@ -18,10 +18,7 @@ public class AdminListService {
 	public List<Admin> getAdminService() {
 		return adminMapper.getAdminMapper();
 	}
-	
-	public String getAdminNameService(String id) {
-		return adminMapper.getAdminNameMapper(id);
-	}
+
 	
 	public ResponseEntity<String> modifyPermissionService(AdminPermissionDto adminPermissionDto){
 		if(adminMapper.modifyPermissionMapper(adminPermissionDto)>0) {

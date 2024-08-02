@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+
 public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -24,32 +25,46 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtFilter jwtFilter;
 
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth){
+    	try {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
+    
+   	}
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http)  {
+    	try {
         http.httpBasic().disable()
         .csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .authorizeRequests()
-        .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/**").permitAll()
         .and()
         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
     }
 
     @Bean
     @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+    protected AuthenticationManager authenticationManager() {
+    	try {
+    		return super.authenticationManager();
+    	}catch(Exception e) {
+    		System.out.println(e);
+    		return null;
+    	}
     }
 }
