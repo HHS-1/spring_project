@@ -7,6 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
     <title>관리자 등록 페이지</title>
     <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=2">
@@ -16,7 +19,7 @@
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
     <script src="../static/js/adminList.js?v=3" defer></script>
-    <script src="../static/js/common.js" defer></script>
+    <script src="../static/js/common.js?v=1" defer></script>
 </head>
 <body>
 <%@ include file="./header.jsp" %> 

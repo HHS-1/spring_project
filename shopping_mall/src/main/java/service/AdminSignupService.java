@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import dto.AdminSignupDto;
-import model.Admin;
+import model.AdminEntity;
 import mybatis.AdminMapper;
 
 @Service
@@ -28,19 +28,19 @@ public class AdminSignupService {
 	
 	//회원가입 Service
 	public ResponseEntity<String> createAdminService(AdminSignupDto adminSignupDto){
-		Admin admin = new Admin();
+		AdminEntity adminEntity = new AdminEntity();
 		this.passwordEncoder = new BCryptPasswordEncoder();
 		
-        admin.setAdmin_id(adminSignupDto.getAdmin_id());
-        admin.setAdmin_pw(passwordEncoder.encode(adminSignupDto.getAdmin_pw()));
-        admin.setAdmin_name(adminSignupDto.getAdmin_name());
-        admin.setAdmin_email(adminSignupDto.getAdmin_email());
-        admin.setAdmin_tel(adminSignupDto.getAdmin_tel());
-        admin.setAdmin_part(adminSignupDto.getAdmin_part());
-        admin.setAdmin_position(adminSignupDto.getAdmin_position());
+        adminEntity.setAdmin_id(adminSignupDto.getAdmin_id());
+        adminEntity.setAdmin_pw(passwordEncoder.encode(adminSignupDto.getAdmin_pw()));
+        adminEntity.setAdmin_name(adminSignupDto.getAdmin_name());
+        adminEntity.setAdmin_email(adminSignupDto.getAdmin_email());
+        adminEntity.setAdmin_tel(adminSignupDto.getAdmin_tel());
+        adminEntity.setAdmin_part(adminSignupDto.getAdmin_part());
+        adminEntity.setAdmin_position(adminSignupDto.getAdmin_position());
 		
         try{
-        	adminMapper.createAdminMapper(admin);
+        	adminMapper.createAdminMapper(adminEntity);
         	return ResponseEntity.ok("회원가입 성공");
         }catch(Exception e) {
         	System.out.println(e);

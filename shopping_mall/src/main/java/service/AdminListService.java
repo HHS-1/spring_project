@@ -7,17 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import dto.AdminPermissionDto;
-import model.Admin;
+import model.AdminEntity;
 import mybatis.AdminMapper;
 
 @Service
 public class AdminListService {
 	@Autowired
 	private AdminMapper adminMapper;
-	
-	public List<Admin> getAdminService() {
-		return adminMapper.getAdminMapper();
-	}
 
 	
 	public ResponseEntity<String> modifyPermissionService(AdminPermissionDto adminPermissionDto){

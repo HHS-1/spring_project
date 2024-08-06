@@ -2,32 +2,25 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jwt.JwtFilter;
 import jwt.JwtUtil;
-import service.AdminListService;
 import service.CommonService;
-import utility.CookieUtil;
+import service.HomeService;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-	private AdminListService adminListService;
+	private HomeService homeService;
 	@Autowired
 	private CommonService commonService;
 	@Autowired
@@ -44,8 +37,8 @@ public class HomeController {
     @GetMapping("/admin/list")
     public String adminListPage(Model model, HttpServletRequest req) throws ServletException, IOException {
     	String path = "admin_list";
-    	model.addAttribute("adminInfo",adminListService.getAdminService());
-    	return commonService.verify(req,model,path);
+    	model.addAttribute("adminInfo",homeService.getAdminService());
+    	return commonService.verifyMaster(req,model,path);
     }
     
     @GetMapping("/admin/add")
@@ -54,11 +47,15 @@ public class HomeController {
     }
     
     @GetMapping("/admin/setting/shop")
-    public String shopSettingPage(Model model, HttpServletRequest req) {
-    	String path = "admin_siteinfo";
-    	model.addAttribute("adminInfo",adminListService.getAdminService());
-    	return commonService.verify(req,model,path);
-    }
+	 public String getShopSetting(Model model, HttpServletRequest req) throws Exception{
+	    
+	    String id = commonService.verify(req, model);
+	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+		else {
+			model.addAttribute("settingData", homeService.getShopSettingService(id));			
+		}
+	    return "admin_siteinfo";
+	 }
     
     @GetMapping("/admin/test")
     @ResponseBody

@@ -62,7 +62,11 @@ public class AdminAuthService {
 	public String adminLogoutService(HttpServletResponse res, HttpServletRequest req){
 		CookieUtil.deleteCookie(res, "refreshToken", "/");
 		req.getSession().invalidate();
-	    
+		
+		res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0"); // 캐시 방지
+	    res.setHeader("Pragma", "no-cache"); // HTTP 1.0
+	    res.setDateHeader("Expires", 0);
+		
 		return "redirect:/admin/login";
 	}
 }

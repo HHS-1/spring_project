@@ -1,3 +1,4 @@
+
 function extractData(formId){
 	const settingData = document.querySelectorAll(`#${formId} [name]`);
 	const settingObjectData = {};
@@ -7,15 +8,23 @@ function extractData(formId){
 	return settingObjectData;
 }
 
-const saveSetting = function(){
-	fetch("./shop/save",{
+
+
+const insertSetting = function(){
+	const accessToken = sessionStorage.getItem("accessToken");
+	fetch("./shop/insert",{
 		method : "POST",
 		headers : {
-			"Content-Type" : "application-json",
+			'Authorization': `Bearer ${accessToken}`,
+			"Content-Type" : "application/json",
+			
 		},
-		body : JSON.stringify([
-			extractData("frm1"), extractData("frm2"), extractData("frm3")
-		]),	
+		body: JSON.stringify({
+		    siteSettingData: extractData("frm1"),
+		    companySettingData: extractData("frm2"),
+		    paymentSettingData: extractData("frm3")
+		}),
+
 	})
 	.then(response =>{
 		console.log(response);
@@ -25,4 +34,25 @@ const saveSetting = function(){
 	})	
 }
 
-document.querySelector("#btn_setting_save").addEventListener("click",saveSetting);
+const saveSetting = function(){
+	const accessToken = sessionStorage.getItem("accessToken");
+	fetch("./shop/save",{
+		method : "POST",
+		headers : {
+			'Authorization': `Bearer ${accessToken}`,
+			"Content-Type" : "application/json",
+		},
+		body: JSON.stringify({
+		    siteSettingData: extractData("frm1"),
+		    companySettingData: extractData("frm2"),
+		    paymentSettingData: extractData("frm3")
+		}),
+	})
+	.then(response =>{
+		console.log(response);
+	})
+	.catch(error => {
+		console.log(error);
+	})	
+}
+document.querySelector("#btn_setting_save").addEventListener("click",insertSetting);

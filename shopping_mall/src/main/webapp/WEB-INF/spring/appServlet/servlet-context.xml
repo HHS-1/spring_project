@@ -38,7 +38,13 @@
     
     <!-- MyBatis 매퍼 스캔 -->
     <mybatis-spring:scan base-package="mybatis" />
-
+	
+	<!-- File -->
+	<beans:bean id="multipartResorver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"/>
+		<beans:property name="maxUploadSize" value="-1"/>
+		<beans:property name="maxInMemorySize" value="2097152"/>
+	</beans:bean>
 	
 	
 	

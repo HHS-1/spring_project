@@ -39,4 +39,30 @@
     	</choose>
     	 WHERE idx_admin=#{idx_admin} 
     </update>
+    
+    <insert id="insertSiteSettingMapper" parameterType="model.SettingSiteEntity">
+	    INSERT INTO setting_site 
+	    (admin_id, site_name, admin_email, point_usable, reward, auth_level, in_date) 
+	    VALUES 
+	    (#{admin_id}, #{site_name}, #{admin_email}, #{point_usable}, #{reward}, #{auth_level}, now())
+	</insert>
+
+    <insert id="insertCompanySettingMapper" parameterType="model.SettingCompanyEntity">
+	    INSERT INTO setting_company 
+	    (admin_id, company_name, business_number, ceo_name, ceo_tel, report_number, carrier_number, company_post, company_address, info_manager, info_manager_email, in_date) 
+	    VALUES 
+	    (#{admin_id}, #{company_name}, #{business_number}, #{ceo_name}, #{ceo_tel}, #{report_number}, #{carrier_number}, #{company_post}, #{company_address}, #{info_manager}, #{info_manager_email}, now())
+	</insert>
+
+    <insert id="insertPaymentSettingMapper" parameterType="model.SettingPaymentEntity">
+	    INSERT INTO setting_payment 
+	    (admin_id, bank_name, account_number, credit_card_usable, mobile_payment_usable, book_coupon_usable, min_point, max_point, receipt_usable, delivery_company, delivery_fee, delivery_date_usable, in_date) 
+	    VALUES 
+	    (#{admin_id}, #{bank_name}, #{account_number}, #{credit_card_usable}, #{mobile_payment_usable}, #{book_coupon_usable}, #{min_point}, #{max_point}, #{receipt_usable}, #{delivery_company}, #{delivery_fee}, #{delivery_date_usable}, now())
+	</insert>
+	
+	<select id="getShopSettingMapper" resultType="model.AllSettingEntity">
+		SELECT * FROM admin_settings
+	</select>
+
 </mapper>
