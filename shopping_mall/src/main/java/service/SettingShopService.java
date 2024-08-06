@@ -20,13 +20,13 @@ public class SettingShopService {
 	
 	public ResponseEntity<String> insertSettingService(ShopSettingDto shopSettingDto, String admin_id){
 		SettingSiteEntity site = new SettingSiteEntity();
-		site.setEntity(shopSettingDto.getSiteSettingData(), admin_id, site);
+		site.setEntity(shopSettingDto.getSiteSettingData(), admin_id);
 		
 		SettingCompanyEntity company = new SettingCompanyEntity();
-		company.setEntity(shopSettingDto.getCompanySettingData(), admin_id, company);
+		company.setEntity(shopSettingDto.getCompanySettingData(), admin_id);
 		
 		SettingPaymentEntity payment = new SettingPaymentEntity();
-		payment.setEntity(shopSettingDto.getPaymentSettingData(), admin_id, payment);
+		payment.setEntity(shopSettingDto.getPaymentSettingData(), admin_id);
 		
 		try {
 			adminMapper.insertSiteSettingMapper(site);
@@ -35,6 +35,27 @@ public class SettingShopService {
 		}catch(Exception e) {
 			System.out.println(e);
 			return ResponseEntity.status(435).body("세팅 실패 DB 오류");
+		}
+		return ResponseEntity.ok("세팅 저장 성공");
+	}
+	
+	public ResponseEntity<String> saveSettingService(ShopSettingDto shopSettingDto, String admin_id){
+		SettingSiteEntity site = new SettingSiteEntity();
+		site.setEntity(shopSettingDto.getSiteSettingData(), admin_id);
+		
+		SettingCompanyEntity company = new SettingCompanyEntity();
+		company.setEntity(shopSettingDto.getCompanySettingData(), admin_id);
+		
+		SettingPaymentEntity payment = new SettingPaymentEntity();
+		payment.setEntity(shopSettingDto.getPaymentSettingData(), admin_id);
+		
+		try {
+			adminMapper.saveSiteSettingMapper(site);
+			adminMapper.saveCompanySettingMapper(company);
+			adminMapper.savePaymentSettingMapper(payment);	
+		}catch(Exception e) {
+			System.out.println(e);
+			return ResponseEntity.status(436).body("저장 실패 DB 오류");
 		}
 		return ResponseEntity.ok("세팅 저장 성공");
 	}

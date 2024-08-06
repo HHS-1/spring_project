@@ -32,7 +32,7 @@
 <ul class="info_form">
     <li>홈페이지 제목</li>
     <li>
-        <input name="site_name" type="text" value="${settingData.site_name}" class="in_form1"> 
+        <input id="dataCheck" name="site_name" type="text" value="${settingData.site_name}" class="in_form1"> 
     </li>
 </ul>    
 <ul class="info_form">

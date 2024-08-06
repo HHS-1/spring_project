@@ -62,7 +62,56 @@
 	</insert>
 	
 	<select id="getShopSettingMapper" resultType="model.AllSettingEntity">
-		SELECT * FROM admin_settings
+		SELECT * FROM admin_settings where admin_id=#{id}
 	</select>
+	
+	<update id="saveSiteSettingMapper">
+		UPDATE setting_site
+        SET
+            site_name = #{site_name},
+            admin_email = #{admin_email},
+            point_usable = #{point_usable},
+            reward = #{reward},
+            auth_level = #{auth_level},
+            in_date = NOW()
+        WHERE
+            admin_id = #{admin_id}
+	</update>
+
+	<update id="saveCompanySettingMapper">
+		UPDATE setting_company
+	    SET
+	        company_name = #{company_name},
+	        business_number = #{business_number},
+	        ceo_name = #{ceo_name},
+	        ceo_tel = #{ceo_tel},
+	        report_number = #{report_number},
+	        carrier_number = #{carrier_number},
+	        company_post = #{company_post},
+	        company_address = #{company_address},
+	        info_manager = #{info_manager},
+	        info_manager_email = #{info_manager_email},
+	        in_date = NOW() 
+	    WHERE
+	        admin_id = #{admin_id}
+	</update>
+	<update id="savePaymentSettingMapper">
+		UPDATE setting_payment
+        SET
+            bank_name = #{bank_name},
+            account_number = #{account_number},
+            credit_card_usable = #{credit_card_usable},
+            mobile_payment_usable = #{mobile_payment_usable},
+            book_coupon_usable = #{book_coupon_usable},
+            min_point = #{min_point},
+            max_point = #{max_point},
+            receipt_usable = #{receipt_usable},
+            delivery_company = #{delivery_company},
+            delivery_fee = #{delivery_fee},
+            delivery_date_usable = #{delivery_date_usable},
+            in_date = NOW()
+        WHERE
+            admin_id = #{admin_id}
+	</update>
 
 </mapper>

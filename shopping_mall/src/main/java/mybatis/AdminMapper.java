@@ -5,14 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import dto.AdminLoginDto;
 import dto.AdminPermissionDto;
+import model.AdminAuthentication;
 import model.AdminEntity;
 import model.AllSettingEntity;
 import model.SettingCompanyEntity;
 import model.SettingPaymentEntity;
 import model.SettingSiteEntity;
-import model.AdminAuthentication;
 
 @Mapper
 public interface AdminMapper {
@@ -27,4 +26,7 @@ public interface AdminMapper {
 	int insertCompanySettingMapper(SettingCompanyEntity settingCompanyEntity);
 	int insertPaymentSettingMapper(SettingPaymentEntity settingPaymentEntity);
 	AllSettingEntity getShopSettingMapper(String id);
+	int saveSiteSettingMapper(SettingSiteEntity settingSiteEntity);
+	int saveCompanySettingMapper(SettingCompanyEntity settingCompanyEntity);
+	int savePaymentSettingMapper(SettingPaymentEntity settingPaymentEntity);
 }

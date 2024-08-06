@@ -49,10 +49,17 @@ const saveSetting = function(){
 		}),
 	})
 	.then(response =>{
-		console.log(response);
+		window.location.reload();
 	})
 	.catch(error => {
 		console.log(error);
 	})	
 }
-document.querySelector("#btn_setting_save").addEventListener("click",insertSetting);
+
+document.querySelector("#btn_setting_save").addEventListener("click",()=>{
+	if(document.querySelector("#dataCheck").value == null){
+		insertSetting();
+	}else{
+		saveSetting();
+	}
+});
