@@ -57,6 +57,34 @@ public class HomeController {
 	    return "admin_siteinfo";
 	 }
     
+    @GetMapping("/admin/product")
+    public String productPage(Model model, HttpServletRequest req) {
+    	String id = commonService.verify(req, model);
+	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+	    return "product_list";
+    }
+    
+    @GetMapping("/admin/product/add")
+    public String productAddPage(Model model, HttpServletRequest req) {
+    	String id = commonService.verify(req, model);
+	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+	    return "product_write";
+    }
+    
+    @GetMapping("/admin/category")
+    public String categoryPage(Model model, HttpServletRequest req) {
+    	String id = commonService.verify(req, model);
+	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+	    return "cate_list";
+    }
+    
+    @GetMapping("/admin/category/add")
+    public String categoryAddPage(Model model, HttpServletRequest req) {
+    	String id = commonService.verify(req, model);
+	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+	    return "cate_write";
+    }
+    
     @GetMapping("/admin/test")
     @ResponseBody
     public String test() {

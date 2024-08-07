@@ -7,14 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품등록 페이지</title>
-    <link rel="stylesheet" type="text/css" href="./css/basic.css">
-    <link rel="stylesheet" type="text/css" href="./css/login.css?v=1">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/category.css?v=6">
-    <link rel="icon" href="./img/logo.png" sizes="128x128">
-    <link rel="icon" href="./img/logo.png" sizes="64x64">
-    <link rel="icon" href="./img/logo.png" sizes="32x32">
-    <link rel="icon" href="./img/logo.png" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="../static//css/login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../static//css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static//css/category.css?v=7">
+    <link rel="icon" href="../static/img/logo.png" sizes="128x128">
+    <link rel="icon" href="../static/img/logo.png" sizes="64x64">
+    <link rel="icon" href="../static/img/logo.png" sizes="32x32">
+    <link rel="icon" href="../static/img/logo.png" sizes="16x16">
+    <script src="../../static/js/common.js?v=3" defer></script>
+    <script src="../../static/js/categoryList.js" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
@@ -34,7 +36,7 @@
         </form>
     </span>
 </div>
-<div class="subpage_view2">
+<div id="category_table" class="subpage_view2">
     <ul>
         <li><input type="checkbox"></li>
         <li>분류코드</li>
@@ -45,27 +47,18 @@
         <li>사용 유/무</li>
         <li>관리</li>
     </ul>
-    <ul>
-        <li><input type="checkbox"></li>
-        <li style="text-align: left; text-indent: 5px;">분류코드</li>
-        <li>대메뉴 코드</li>
-        <li style="text-align: left; text-indent: 5px;">대메뉴명</li>
-        <li>-</li>
-        <li style="text-align: left; text-indent: 5px;">-</li>
-        <li>Y</li>
-        <li>[수정]</li>
-    </ul>
-    <ul>
+   
+    <ul id="none_category">
         <li style="width: 100%;">등록된 카테고리가 없습니다.</li>
     </ul>
 </div>
 <div class="subpage_view3">
     <ul class="pageing">
-        <li><img src="./ico/double_left.svg"></li>
-        <li><img src="./ico/left.svg"></li>
+        <li><img src="../static/ico/double_left.svg"></li>
+        <li><img src="../static/ico/left.svg"></li>
         <li>1</li>
-        <li><img src="./ico/right.svg"></li>
-        <li><img src="./ico/double_right.svg"></li>
+        <li><img src="../static/ico/right.svg"></li>
+        <li><img src="../static/ico/double_right.svg"></li>
     </ul>
 </div>
 <div class="subpage_view4">

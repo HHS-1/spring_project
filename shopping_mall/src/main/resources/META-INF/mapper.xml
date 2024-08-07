@@ -113,5 +113,13 @@
         WHERE
             admin_id = #{admin_id}
 	</update>
+	
+	<insert id="createCategoryMapper" parameterType="dto.CategoryDto">
+		INSERT INTO category VALUES('0', #{sort_code}, #{menu_code}, #{menu_name}, #{category_usable}, now());
+	</insert>
+	
+	<select id="getCategoryMapper" resultType="Map">
+		SELECT sort_code, menu_code, menu_name, category_usable FROM category ;	
+	</select>
 
 </mapper>

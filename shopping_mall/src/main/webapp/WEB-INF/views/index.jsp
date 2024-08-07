@@ -16,6 +16,7 @@
     <link rel="icon" href="../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../static/images/logo.png" sizes="16x16">
+    <script src="../static/js/adminLogin.js?v=2" defer></script>
 </head>
 <body class="bodycss">
     <header class="admin_title">
@@ -52,5 +53,5 @@
         </div>
     </footer>
 </body>
-<script src="../static/js/adminLogin.js?v=1"></script>
+
 </html>

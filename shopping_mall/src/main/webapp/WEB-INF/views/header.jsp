@@ -18,8 +18,8 @@
             <li title="쇼핑몰 상품관리"><a href="<%=contextPath%>/admin/list">쇼핑몰 관리자 리스트</a></li>
 		</c:if>
             <li title="쇼핑몰 회원관리">쇼핑몰 회원관리</li>
-            <li title="쇼핑몰 상품관리">쇼핑몰 상품관리</li>
-            <li title="쇼핑몰 기본설정">쇼핑몰 기본설정</li>
+            <li title="쇼핑몰 상품관리"><a href="<%=contextPath%>/admin/product">쇼핑몰 상품관리</a></li>
+            <li title="쇼핑몰 기본설정"><a href="<%=contextPath%>/admin/setting/shop">쇼핑몰 기본설정</a></li>
         </ol>
     </div>
 </nav>

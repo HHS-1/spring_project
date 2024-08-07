@@ -33,7 +33,7 @@ const login = function(){
 			console.log(token);
 			saveToken(token);
 			alert("로그인성공")	
-			location="./list";
+			location="./product";
 		}
 	})
 	.catch(error=>{

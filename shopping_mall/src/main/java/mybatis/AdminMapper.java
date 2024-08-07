@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import dto.AdminPermissionDto;
+import dto.CategoryDto;
 import model.AdminAuthentication;
 import model.AdminEntity;
 import model.AllSettingEntity;
@@ -29,4 +30,7 @@ public interface AdminMapper {
 	int saveSiteSettingMapper(SettingSiteEntity settingSiteEntity);
 	int saveCompanySettingMapper(SettingCompanyEntity settingCompanyEntity);
 	int savePaymentSettingMapper(SettingPaymentEntity settingPaymentEntity);
+	
+	int createCategoryMapper(CategoryDto categoryDto);
+	List<CategoryDto> getCategoryMapper();
 }

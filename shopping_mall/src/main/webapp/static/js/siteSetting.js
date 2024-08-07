@@ -3,8 +3,15 @@ function extractData(formId){
 	const settingData = document.querySelectorAll(`#${formId} [name]`);
 	const settingObjectData = {};
 	settingData.forEach(element=>{
-		settingObjectData[element.name] = element.value;
+		 if (element.type === 'radio') {
+            if (element.checked) {
+                settingObjectData[element.name] = element.value;
+            }
+        } else {
+            settingObjectData[element.name] = element.value;
+        }
 	});
+
 	return settingObjectData;
 }
 

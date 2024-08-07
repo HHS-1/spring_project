@@ -19,7 +19,7 @@
     <link rel="icon" href="../../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../../static/images/logo.png" sizes="16x16">
-    <script src="../../static/js/siteSetting.js?v=5" defer></script>
+    <script src="../../static/js/siteSetting.js?v=6" defer></script>
     <script src="../../static/js/common.js?v=3" defer></script>
 </head>
 <body>
@@ -46,11 +46,11 @@
     <li class="checkcss">
     <em><label>
         <input type="radio" name="point_usable" class="ckclass" value="Y" 
-            <c:if test="${settingData.point_usable.equals('Y')}">checked</c:if>>포인트 사용
+            <c:if test="${settingData.point_usable.equals('Y')}">checked</c:if>/>포인트 사용
     </label></em>
 	<em><label>
         <input type="radio" name="point_usable" class="ckclass" value="N" 
-            <c:if test="${settingData.point_usable.equals('N')}">checked</c:if>>포인트 미사용
+            <c:if test="${settingData.point_usable.equals('N')}">checked</c:if>/>포인트 미사용
     </label></em>
 
     </li>
