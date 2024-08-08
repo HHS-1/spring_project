@@ -19,7 +19,7 @@
     <link rel="icon" href="../../static/images/logo.png" sizes="64x64">
     <link rel="icon" href="../../static/images/logo.png" sizes="32x32">
     <link rel="icon" href="../../static/images/logo.png" sizes="16x16">
-    <script src="../../static/js/siteSetting.js?v=6" defer></script>
+    <script src="../../static/js/siteSetting.js?v=7" defer></script>
     <script src="../../static/js/common.js?v=3" defer></script>
 </head>
 <body>
@@ -32,7 +32,8 @@
 <ul class="info_form">
     <li>홈페이지 제목</li>
     <li>
-        <input id="dataCheck" name="site_name" type="text" value="${settingData.site_name}" class="in_form1"> 
+    	<input id="dataCheck" type="hidden" value="${settingData.site_name}">
+        <input name="site_name" type="text" value="${settingData.site_name}" class="in_form1"> 
     </li>
 </ul>    
 <ul class="info_form">
@@ -50,7 +51,7 @@
     </label></em>
 	<em><label>
         <input type="radio" name="point_usable" class="ckclass" value="N" 
-            <c:if test="${settingData.point_usable.equals('N')}">checked</c:if>/>포인트 미사용
+            <c:if test="${settingData.point_usable.equals('N') or settingData.point_usable == null}">checked</c:if>/>포인트 미사용
     </label></em>
 
     </li>
@@ -141,7 +142,7 @@
         <em><label><input name="credit_card_usable" type="radio" class="ckclass" value="Y" 
         <c:if test="${settingData.credit_card_usable.equals('Y')}">checked</c:if>> 사용</label></em> 
         <em><label><input name="credit_card_usable" type="radio" class="ckclass" value="N" 
-        <c:if test="${settingData.credit_card_usable.equals('N')}">checked</c:if>> 미사용</label></em> ※ 해당 PG사가 있을 경우 사용으로 변경합니다.
+        <c:if test="${settingData.credit_card_usable.equals('N') or settingData.point_usable == null}">checked</c:if>> 미사용</label></em> ※ 해당 PG사가 있을 경우 사용으로 변경합니다.
     </li>
 </ul>
 <ul class="info_form">
@@ -150,7 +151,7 @@
         <em><label><input name="mobile_payment_usable" type="radio" class="ckclass" value="Y"
         <c:if test="${settingData.mobile_payment_usable.equals('Y')}">checked</c:if>> 사용</label></em> 
         <em><label><input name="mobile_payment_usable" type="radio" class="ckclass" value="N" 
-        <c:if test="${settingData.mobile_payment_usable.equals('N')}">checked</c:if>> 미사용</label></em> ※ 주문시 휴대폰 결제를 가능하게 할 것인지를 설정합니다.
+        <c:if test="${settingData.mobile_payment_usable.equals('N') or settingData.point_usable == null}">checked</c:if>> 미사용</label></em> ※ 주문시 휴대폰 결제를 가능하게 할 것인지를 설정합니다.
     </li>
 </ul>
 <ul class="info_form">
@@ -159,7 +160,7 @@
         <em><label><input name="book_coupon_usable" type="radio" class="ckclass" value="Y"
         <c:if test="${settingData.book_coupon_usable.equals('Y')}">checked</c:if>> 사용</label></em> 
         <em><label><input name="book_coupon_usable" type="radio" class="ckclass" value="N" 
-        <c:if test="${settingData.book_coupon_usable.equals('N')}">checked</c:if>> 미사용</label></em> ※ 도서상품권 결제만 적용이 되며, 그 외에 상품권은 결제 되지 않습니다.
+        <c:if test="${settingData.book_coupon_usable.equals('N') or settingData.point_usable == null}">checked</c:if>> 미사용</label></em> ※ 도서상품권 결제만 적용이 되며, 그 외에 상품권은 결제 되지 않습니다.
     </li>
 </ul>
 <ul class="info_form2">
@@ -178,7 +179,7 @@
         <em><label><input name="receipt_usable" type="radio" class="ckclass" value="Y"
         <c:if test="${settingData.receipt_usable.equals('Y')}">checked</c:if>> 사용</label></em> 
         <em><label><input name="receipt_usable" type="radio" class="ckclass" value="N"
-         <c:if test="${settingData.receipt_usable.equals('N')}">checked</c:if>> 미사용</label></em> ※ 현금영수증 관련 사항은 PG사 가입이 되었을 경우 사용가능 합니다.
+         <c:if test="${settingData.receipt_usable.equals('N') or settingData.point_usable == null}">checked</c:if>> 미사용</label></em> ※ 현금영수증 관련 사항은 PG사 가입이 되었을 경우 사용가능 합니다.
     </li>
 </ul>
 <ul class="info_form2">
@@ -197,7 +198,7 @@
         <em><label><input name="delivery_date_usable" type="radio" class="ckclass" value="Y"
         <c:if test="${settingData.delivery_date_usable.equals('Y')}">checked</c:if>> 사용</label></em> 
         <em><label><input name="delivery_date_usable" type="radio" class="ckclass" value="N"
-        <c:if test="${settingData.delivery_date_usable.equals('N')}">checked</c:if>> 미사용</label></em> ※ 희망배송일 사용시 사용자가 직접 설정 할 수 있습니다.
+        <c:if test="${settingData.delivery_date_usable.equals('N') or settingData.point_usable == null}">checked</c:if>> 미사용</label></em> ※ 희망배송일 사용시 사용자가 직접 설정 할 수 있습니다.
     </li>
 </ul>
 </div>

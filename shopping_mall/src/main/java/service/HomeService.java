@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import model.AdminEntity;
 import model.AllSettingEntity;
+import model.CategoryMenuEntity;
 import mybatis.AdminMapper;
 
 @Service
@@ -21,4 +22,7 @@ public class HomeService {
 		return adminMapper.getShopSettingMapper(id);
 	}
 	
+	public List<CategoryMenuEntity> getCategoryMenuService(){
+		return adminMapper.getCategoryMenuMapper();
+	}
 }

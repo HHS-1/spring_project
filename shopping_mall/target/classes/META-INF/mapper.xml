@@ -119,7 +119,17 @@
 	</insert>
 	
 	<select id="getCategoryMapper" resultType="Map">
-		SELECT sort_code, menu_code, menu_name, category_usable FROM category ;	
+		SELECT idx_category,sort_code, menu_code, menu_name, category_usable FROM category ;	
 	</select>
 
+	<delete id="deleteCategoryMapper">
+		DELETE FROM category WHERE idx_category IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{idx}
+		</foreach>
+	</delete>
+	
+	<select id="getCategoryMenuMapper" resultType="model.CategoryMenuEntity">
+		SELECT menu_code, menu_name FROM category;
+	</select>
 </mapper>

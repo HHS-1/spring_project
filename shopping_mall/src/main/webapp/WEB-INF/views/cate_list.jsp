@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,7 +39,7 @@
 </div>
 <div id="category_table" class="subpage_view2">
     <ul>
-        <li><input type="checkbox"></li>
+        <li><input id="checkAll" type="checkbox"></li>
         <li>분류코드</li>
         <li>대메뉴 코드</li>
         <li>대메뉴명</li>
@@ -62,10 +63,10 @@
     </ul>
 </div>
 <div class="subpage_view4">
-    <input type="button" value="카테고리 삭제" title="카테고리 삭제" class="p_button">
+    <input type="button" id="btn_delete" value="카테고리 삭제" title="카테고리 삭제" class="p_button">
     <span style="float: right;">
     <input type="button" value="상품 리스트" title="상품 리스트" class="p_button p_button_color1">
-    <input type="button" value="카테고리 등록" title="카테고리 등록" class="p_button p_button_color2">
+    <input type="button" value="카테고리 등록" title="카테고리 등록" class="p_button p_button_color2" onclick="location.href='/admin/category/add'">
     </span>
 </div>
 </section>

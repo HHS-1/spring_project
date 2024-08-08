@@ -35,6 +35,8 @@ const insertSetting = function(){
 	})
 	.then(response =>{
 		console.log(response);
+		alert('저장이 완료되었습니다.');
+		location.reload();
 	})
 	.catch(error => {
 		console.log(error);
@@ -64,7 +66,7 @@ const saveSetting = function(){
 }
 
 document.querySelector("#btn_setting_save").addEventListener("click",()=>{
-	if(document.querySelector("#dataCheck").value == null){
+	if(document.querySelector("#dataCheck").value == null || document.querySelector("#dataCheck").value == ""){
 		insertSetting();
 	}else{
 		saveSetting();

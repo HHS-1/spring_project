@@ -71,7 +71,7 @@
         </ul>
     </div>
     <div class="subpage_view4" style="text-align:center;">
-        <input type="button" value="카테고리 리스트" title="카테고리 리스트" class="p_button p_button_color1" style="margin-right: 5px;">
+        <input type="button" value="카테고리 리스트" title="카테고리 리스트" class="p_button p_button_color1" style="margin-right: 5px;" onclick="location.href='/admin/category'">
         <input type="button" id="btn_addCategory" value="카테고리 생성" title="카테고리 생성" class="p_button p_button_color2">
         </span>
     </div>

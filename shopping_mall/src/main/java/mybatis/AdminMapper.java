@@ -10,6 +10,7 @@ import dto.CategoryDto;
 import model.AdminAuthentication;
 import model.AdminEntity;
 import model.AllSettingEntity;
+import model.CategoryMenuEntity;
 import model.SettingCompanyEntity;
 import model.SettingPaymentEntity;
 import model.SettingSiteEntity;
@@ -33,4 +34,8 @@ public interface AdminMapper {
 	
 	int createCategoryMapper(CategoryDto categoryDto);
 	List<CategoryDto> getCategoryMapper();
+	int deleteCategoryMapper(List<String> idx_category);
+	
+	List<CategoryMenuEntity> getCategoryMenuMapper();
+	
 }

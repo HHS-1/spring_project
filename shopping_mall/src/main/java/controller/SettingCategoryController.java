@@ -29,4 +29,9 @@ public class SettingCategoryController {
 	public List<CategoryDto> getCategory(){
 		return settingCategoryService.getCategoryService();
 	}
+	
+	@PostMapping("/admin/category/delete")
+	public ResponseEntity<String> delteCategory(@RequestBody List<String> idx_category){
+		return settingCategoryService.deleteCategoryService(idx_category);
+	}
 }
