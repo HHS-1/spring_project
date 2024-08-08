@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/login.css?v=1">
     <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/product.css?v=7">
+    <link rel="stylesheet" type="text/css" href="../../static/css/product.css?v=8">
     <link rel="icon" href="../../static/img/logo.png" sizes="128x128">
     <link rel="icon" href="../../static/img/logo.png" sizes="64x64">
     <link rel="icon" href="../../static/img/logo.png" sizes="32x32">
@@ -24,7 +24,7 @@
 <main class="maincss">
 <section>
 <p>상품 등록 페이지</p>
-<div class="product_insert">
+<div id="product_insert" class="product_insert">
     <ul>
         <li>대메뉴 카테고리</li>
         <li>
@@ -103,22 +103,23 @@
             </label>
         </li>
     </ul>
-    <ul style="height: 160px;">
+    <ul style="height: 200px;">
         <li>상품 대표이미지</li>
         <li>
             <ol style="width:100%; height: auto;">
+            <li id="priview" style="width:200px; height:155px;"></li>
             <li style="width:100%; height:45px;">
-            <input type="file" name="product_image1">
+            <input type="file" id="product_image1" name="product_image1" multiple>
             <span class="help_text">※ 상품 대표이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
             </li>
-            <li style="height:45px;">
+            <!-- <li style="height:45px;">
             <input type="file" name="product_image2">
             <span class="help_text">※ 추가 이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
             </li>
             <li style="height:45px;">
             <input type="file" name="product_image3">
             <span class="help_text">※ 추가 이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
-            </li>
+            </li> -->
             </ol>
         </li>
     </ul>
@@ -132,7 +133,7 @@
 <div class="subpage_view4" style="text-align:center; margin-bottom: 100px;">
     <input type="button" value="상품 리스트" title="상품 리스트" class="p_button p_button_color1" style="margin-right: 5px;">
     <input type="button" value="상품 등록" title="상품 등록" class="p_button p_button_color2">
-    </span>
+    
 </div>
 </section>
 </main>
@@ -142,4 +143,5 @@
     </div>
 </footer>
 </body>
+
 </html>

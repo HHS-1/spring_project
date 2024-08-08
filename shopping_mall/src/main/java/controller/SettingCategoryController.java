@@ -34,4 +34,5 @@ public class SettingCategoryController {
 	public ResponseEntity<String> delteCategory(@RequestBody List<String> idx_category){
 		return settingCategoryService.deleteCategoryService(idx_category);
 	}
+	
 }

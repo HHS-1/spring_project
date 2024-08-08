@@ -132,4 +132,10 @@
 	<select id="getCategoryMenuMapper" resultType="model.CategoryMenuEntity">
 		SELECT menu_code, menu_name FROM category;
 	</select>
+	
+	<insert id="createProductMapper" parameterType="dto.ProductDto">
+		INSERT INTO product VALUES('0', #{menu_code}, #{product_code}, #{product_name}, #{product_info}, 
+		#{product_price}, #{product_discount_rate}, #{product_discount_price}, #{product_each}, 
+		#{sale_usable}, #{soldout_usable}, #{product_image1}, #{product_image2}, #{product_image3}, #{product_detail}, now())
+	</insert>
 </mapper>

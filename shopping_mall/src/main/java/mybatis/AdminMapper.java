@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import dto.AdminPermissionDto;
 import dto.CategoryDto;
+import dto.ProductDto;
 import model.AdminAuthentication;
 import model.AdminEntity;
 import model.AllSettingEntity;
@@ -35,7 +36,10 @@ public interface AdminMapper {
 	int createCategoryMapper(CategoryDto categoryDto);
 	List<CategoryDto> getCategoryMapper();
 	int deleteCategoryMapper(List<String> idx_category);
-	
 	List<CategoryMenuEntity> getCategoryMenuMapper();
+	
+	int createProductMapper(ProductDto productDto); 
+	
+
 	
 }
