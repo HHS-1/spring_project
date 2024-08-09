@@ -9,7 +9,7 @@ document.querySelector("#btn_idCheck").addEventListener("click", ()=>{
 		return false;
 	}
 	
-	fetch("./id_check?id="+id)
+	fetch("/admin/idCheck?id="+id)
 	.then(response=>{
 		if(response.ok){
 			usableId = true;
@@ -54,7 +54,7 @@ document.querySelector("#btn_adminSignup").addEventListener("click", ()=>{
 		data[key[a]] = info;
 	}
 
-	fetch("./signup",{
+	fetch("/admin/signup/api",{
 		method : "POST",
 		headers : {
 			"Content-Type" : "application/json",

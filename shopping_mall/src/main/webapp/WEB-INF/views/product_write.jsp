@@ -8,27 +8,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품등록 페이지</title>
-    <link rel="stylesheet" type="text/css" href="../../static/css/basic.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/login.css?v=1">
-    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/product.css?v=8">
-    <link rel="icon" href="../../static/img/logo.png" sizes="128x128">
-    <link rel="icon" href="../../static/img/logo.png" sizes="64x64">
-    <link rel="icon" href="../../static/img/logo.png" sizes="32x32">
-    <link rel="icon" href="../../static/img/logo.png" sizes="16x16">
-    <script src="../../static/js/common.js?v=3" defer></script>
-    <script src="../../static/js/product.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/basic.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/product.css?v=9">
+    <link rel="icon" href="/static/img/logo.png" sizes="128x128">
+    <link rel="icon" href="/static/img/logo.png" sizes="64x64">
+    <link rel="icon" href="/static/img/logo.png" sizes="32x32">
+    <link rel="icon" href="/static/img/logo.png" sizes="16x16">
+    <script src="/static/js/common.js?v=3" defer></script>
+    <script src="/static/js/product.js?v=1" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
 <main class="maincss">
 <section>
 <p>상품 등록 페이지</p>
-<div id="product_insert" class="product_insert">
+<form id="frm_product" enctype="multipart/form-data">
+<div class="product_insert">
     <ul>
         <li>대메뉴 카테고리</li>
         <li>
-            <select class="product_input1" name="category_menu">
+            <select class="product_input1" name="menu_code">
             	<option disabled selected>선택하세요</option>
             <c:forEach var="menu" items="${categoryMenu}">
                 <option value="${menu.menu_code}">${menu.menu_code}. ${menu.menu_name}</option>
@@ -42,7 +43,7 @@
         <li>
             <input type="text" id="product_code" name="product_code" class="product_input1"> 
             <input type="button" id="btn_randomCode" value="자동생성" title="자동생성" class="product_btn">
-            <input type="button" value="중복확인" title="중복확인" class="product_btn"> <span class="help_text">※ 상품코드는 절대 중복되지 않도록 합니다.</span>
+            <input type="button" id="btn_codeCheck" value="중복확인" title="중복확인" class="product_btn"> <span class="help_text">※ 상품코드는 절대 중복되지 않도록 합니다.</span>
         </li>
     </ul>
     <ul>
@@ -103,24 +104,37 @@
             </label>
         </li>
     </ul>
-    <ul style="height: 200px;">
+    <ul style="height: 180px;">
         <li>상품 대표이미지</li>
         <li>
-            <ol style="width:100%; height: auto;">
-            <li id="priview" style="width:200px; height:155px;"></li>
-            <li style="width:100%; height:45px;">
-            <input type="file" id="product_image1" name="product_image1" multiple>
-            <span class="help_text">※ 상품 대표이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
-            </li>
-            <!-- <li style="height:45px;">
-            <input type="file" name="product_image2">
-            <span class="help_text">※ 추가 이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
-            </li>
-            <li style="height:45px;">
-            <input type="file" name="product_image3">
-            <span class="help_text">※ 추가 이미지 이며, 이미지 용량은 2MB 까지 입니다.</span>
-            </li> -->
+            <ol style="width:620px; height: auto; display : flex">
+	            <li>
+		            <div id="preview1" class="preview">
+		            	<span class="plus">+</span>
+		            </div>
+		            <div>
+			            <input type="file" id="product_image1" name="product_image1" style="display:none">
+			            <!-- <span class="help_text">※ 상품 대표이미지 이며, 이미지 용량은 2MB 까지 입니다.</span> -->
+		            </div>
+	            </li>
+	            <li>
+		            <div id="preview2" class="preview">
+		            	<span  class="plus">+</span>
+		            </div>
+		            <div>
+			            <input type="file" id="product_image2" name="product_image2" style="display:none">   
+		            </div>
+	            </li>
+	            <li>
+		            <div id="preview3" class="preview">
+		            	<span class="plus">+</span>
+		            </div>
+		            <div>
+			            <input type="file" id="product_image3" name="product_image3" style="display:none">			   
+		            </div>
+	            </li>
             </ol>
+        <span class="help_text">※ 이미지 용량은 2MB 까지 입니다.</span>
         </li>
     </ul>
     <ul style="height: 400px;">
@@ -130,9 +144,10 @@
         </li>
     </ul>
 </div>
+</form>
 <div class="subpage_view4" style="text-align:center; margin-bottom: 100px;">
     <input type="button" value="상품 리스트" title="상품 리스트" class="p_button p_button_color1" style="margin-right: 5px;">
-    <input type="button" value="상품 등록" title="상품 등록" class="p_button p_button_color2">
+    <input type="button" id="btn_createProduct" value="상품 등록" title="상품 등록" class="p_button p_button_color2">
     
 </div>
 </section>

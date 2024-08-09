@@ -1,12 +1,25 @@
 package dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class ProductDto {
-	int idx_product, product_price, product_discount_rate, product_discount_price,product_each;
-	String menu_code, product_code, product_name, product_info, sale_usable, soldout_usable, 
-	product_image1, product_image2, product_image3, product_detail;
+	private String menu_code;
+    private String product_code;
+    private String product_name;
+    private String product_info;
+    private String product_price;
+    private String product_discount_rate;
+    private String product_discount_price;
+    private String product_each;
+    private String sale_usable;
+    private String soldout_usable;
+    private MultipartFile product_image1;
+    private MultipartFile product_image2;
+    private MultipartFile product_image3;
+    private String product_detail;
 }

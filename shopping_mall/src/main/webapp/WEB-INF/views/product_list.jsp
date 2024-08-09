@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 등록 페이지</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/login.css?v=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/product.css?v=5">
-    <link rel="icon" href="../static/img/logo.png" sizes="128x128">
-    <link rel="icon" href="../static/img/logo.png" sizes="64x64">
-    <link rel="icon" href="../static/img/logo.png" sizes="32x32">
-    <link rel="icon" href="../static/img/logo.png" sizes="16x16">
-    <script src="../../static/js/common.js?v=3" defer></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/product.css?v=5">
+    <link rel="icon" href="/static/img/logo.png" sizes="128x128">
+    <link rel="icon" href="/static/img/logo.png" sizes="64x64">
+    <link rel="icon" href="/static/img/logo.png" sizes="32x32">
+    <link rel="icon" href="/static/img/logo.png" sizes="16x16">
+    <script src="//static/js/common.js?v=3" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
@@ -70,11 +70,11 @@
 </div>
 <div class="subpage_view3">
     <ul class="pageing">
-        <li><img src="../static/ico/double_left.svg"></li>
-        <li><img src="../static/ico/left.svg"></li>
+        <li><img src="/static/ico/double_left.svg"></li>
+        <li><img src="/static/ico/left.svg"></li>
         <li>1</li>
-        <li><img src="../static/ico/right.svg"></li>
-        <li><img src="../static/ico/double_right.svg"></li>
+        <li><img src="/static/ico/right.svg"></li>
+        <li><img src="/static/ico/double_right.svg"></li>
     </ul>
 </div>
 <div class="subpage_view4">

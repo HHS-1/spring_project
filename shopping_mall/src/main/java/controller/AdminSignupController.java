@@ -17,13 +17,13 @@ public class AdminSignupController {
 	private AdminSignupService adminSignupService;
 	
 	//아이디 중복검사 컨트롤러
-	@GetMapping("/admin/id_check")
+	@GetMapping("/admin/idCheck")
 	public ResponseEntity<String> adminIdCheck(String id){
 		return adminSignupService.adminIdCheckService(id);
 	}
 	
 	//Admin 회원가입 컨트롤러
-	@PostMapping("/admin/signup")
+	@PostMapping("/admin/signup/api")
 	public ResponseEntity<String> createAdmin(@RequestBody AdminSignupDto adminSignupDto){
 		return adminSignupService.createAdminService(adminSignupDto);
 	}

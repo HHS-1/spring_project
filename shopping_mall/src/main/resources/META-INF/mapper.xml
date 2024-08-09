@@ -133,9 +133,19 @@
 		SELECT menu_code, menu_name FROM category;
 	</select>
 	
-	<insert id="createProductMapper" parameterType="dto.ProductDto">
+	<select id="checkCodeMapper" parameterType="String" resultType="int">
+		SELECT * FROM product WHERE product_code = #{code}
+	</select>
+	
+	<insert id="createProductMapper" parameterType="model.productEntity">
 		INSERT INTO product VALUES('0', #{menu_code}, #{product_code}, #{product_name}, #{product_info}, 
 		#{product_price}, #{product_discount_rate}, #{product_discount_price}, #{product_each}, 
-		#{sale_usable}, #{soldout_usable}, #{product_image1}, #{product_image2}, #{product_image3}, #{product_detail}, now())
+		#{sale_usable}, #{soldout_usable}, #{product_detail}, now())
+	</insert>
+	
+	<insert id="saveProductImageMapper" parameterType="model.ProductFileEntity">
+		INSERT INTO product_file VALUES
+		('0', #{product_code}, #{product_image1}, #{product_image2},
+		#{product_image3},#{product_image1_name},#{product_image2_name},#{product_image3_name},now())
 	</insert>
 </mapper>

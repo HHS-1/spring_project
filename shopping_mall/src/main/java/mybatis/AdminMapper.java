@@ -12,9 +12,11 @@ import model.AdminAuthentication;
 import model.AdminEntity;
 import model.AllSettingEntity;
 import model.CategoryMenuEntity;
+import model.ProductFileEntity;
 import model.SettingCompanyEntity;
 import model.SettingPaymentEntity;
 import model.SettingSiteEntity;
+import model.productEntity;
 
 @Mapper
 public interface AdminMapper {
@@ -37,8 +39,11 @@ public interface AdminMapper {
 	List<CategoryDto> getCategoryMapper();
 	int deleteCategoryMapper(List<String> idx_category);
 	List<CategoryMenuEntity> getCategoryMenuMapper();
+	int checkCodeMapper(String code);
 	
-	int createProductMapper(ProductDto productDto); 
+	
+	int createProductMapper(productEntity productEntity);
+	int saveProductImageMapper(ProductFileEntity productFileEntity);
 	
 
 	

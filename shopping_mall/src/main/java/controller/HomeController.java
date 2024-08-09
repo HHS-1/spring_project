@@ -34,14 +34,14 @@ public class HomeController {
         return "index";
     }
     
-    @GetMapping("/admin/list")
+    @GetMapping("/admin/adminList")
     public String adminListPage(Model model, HttpServletRequest req) throws ServletException, IOException {
     	String path = "admin_list";
     	model.addAttribute("adminInfo",homeService.getAdminService());
     	return commonService.verifyMaster(req,model,path);
     }
     
-    @GetMapping("/admin/add")
+    @GetMapping("/admin/signup")
     public String adminAddPage() {
         return "add_master";
     }
