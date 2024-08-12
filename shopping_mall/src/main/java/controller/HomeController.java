@@ -61,7 +61,7 @@ public class HomeController {
     public String productPage(Model model, HttpServletRequest req) {
     	String id = commonService.verify(req, model);
 	    if(id.startsWith("redirect:") || id.equals("403")) return id;
-	    
+	    model.addAttribute("products", homeService.getProductService());
 	    return "product_list";
     }
     

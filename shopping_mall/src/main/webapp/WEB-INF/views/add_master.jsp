@@ -13,6 +13,7 @@
     <link rel="icon" href="/static/images/logo.png" sizes="64x64">
     <link rel="icon" href="/static/images/logo.png" sizes="32x32">
     <link rel="icon" href="/static/images/logo.png" sizes="16x16">
+    <script src="/static/js/admin.js?v=1" defer></script>
 </head>
 <body>
     <header class="admin_title_add">
@@ -80,5 +81,5 @@
         </div>
     </footer>
 </body>
-<script src="../static/js/admin.js?v=1"></script>
+
 </html>

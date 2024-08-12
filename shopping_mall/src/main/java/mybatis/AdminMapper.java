@@ -16,7 +16,7 @@ import model.ProductFileEntity;
 import model.SettingCompanyEntity;
 import model.SettingPaymentEntity;
 import model.SettingSiteEntity;
-import model.productEntity;
+import model.ProductEntity;
 
 @Mapper
 public interface AdminMapper {
@@ -42,9 +42,11 @@ public interface AdminMapper {
 	int checkCodeMapper(String code);
 	
 	
-	int createProductMapper(productEntity productEntity);
+	int createProductMapper(ProductEntity ProductEntity);
 	int saveProductImageMapper(ProductFileEntity productFileEntity);
 	
-
+	List<ProductEntity> getProductMapper();
+	List<Map<String, String>> getProductFilePath(List<String> product_code);
+	int deleteProductMapper(List<String> product_code);
 	
 }

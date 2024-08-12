@@ -167,6 +167,11 @@
 	        <artifactId>spring-beans</artifactId>
 	        <version>${org.springframework-version}</version>
 	    </dependency>
+	    <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
 		
 		<!-- spring-security -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
@@ -270,7 +275,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

@@ -57,6 +57,9 @@ const delete_category = function(){
 	.then(response =>{
 		if(response.ok){
 			location.reload();
+		}else if(response.status == 437){
+			alert('해당 카테고리로 등록된 상품이 존재해 삭제가 불가능합니다.');
+			return false;
 		}
 	})
 	.catch(error => {

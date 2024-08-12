@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,5 +36,20 @@ public class FileUtility {
 		String fileName = today+ranNum+"."+file.getContentType().split("/")[1];
 		
 		return fileName;
+	}
+	
+	public static void deleteFile(List<Map<String,String>> filePath) {
+		try {
+			for(int a = 0 ; a < filePath.size(); a++) {
+				for(int b = 1 ; b <= 3 ; b++) {
+					if(filePath.get(a).get("product_image"+b) != null) {
+						File file = new File(filePath.get(a).get("product_image"+b));
+						file.delete();
+					}
+				}
+			}
+		}catch(Exception e) {
+			
+		}
 	}
 }

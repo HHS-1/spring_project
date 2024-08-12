@@ -1,4 +1,3 @@
-
 const logout = function(){
 	console.log("logout");
 	sessionStorage.removeItem("accessToken");

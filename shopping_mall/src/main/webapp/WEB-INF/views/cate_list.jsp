@@ -8,16 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품등록 페이지</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/basic.css">
-    <link rel="stylesheet" type="text/css" href="../static//css/login.css?v=1">
-    <link rel="stylesheet" type="text/css" href="../static//css/main.css">
-    <link rel="stylesheet" type="text/css" href="../static//css/category.css?v=7">
+    <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/category.css?v=7">
     <link rel="icon" href="../static/img/logo.png" sizes="128x128">
     <link rel="icon" href="../static/img/logo.png" sizes="64x64">
     <link rel="icon" href="../static/img/logo.png" sizes="32x32">
     <link rel="icon" href="../static/img/logo.png" sizes="16x16">
-    <script src="../../static/js/common.js?v=3" defer></script>
-    <script src="../../static/js/categoryList.js" defer></script>
+    <script src="/static/js/categoryList.js?v=1" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
@@ -55,17 +54,17 @@
 </div>
 <div class="subpage_view3">
     <ul class="pageing">
-        <li><img src="../static/ico/double_left.svg"></li>
-        <li><img src="../static/ico/left.svg"></li>
+        <li><img src="/static/ico/double_left.svg"></li>
+        <li><img src="/static/ico/left.svg"></li>
         <li>1</li>
-        <li><img src="../static/ico/right.svg"></li>
-        <li><img src="../static/ico/double_right.svg"></li>
+        <li><img src="/static/ico/right.svg"></li>
+        <li><img src="/static/ico/double_right.svg"></li>
     </ul>
 </div>
 <div class="subpage_view4">
     <input type="button" id="btn_delete" value="카테고리 삭제" title="카테고리 삭제" class="p_button">
     <span style="float: right;">
-    <input type="button" value="상품 리스트" title="상품 리스트" class="p_button p_button_color1">
+    <input type="button" value="상품 리스트" title="상품 리스트" class="p_button p_button_color1" onclick="location.href='/admin/product';">
     <input type="button" value="카테고리 등록" title="카테고리 등록" class="p_button p_button_color2" onclick="location.href='/admin/category/add'">
     </span>
 </div>

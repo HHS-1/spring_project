@@ -9,9 +9,10 @@ import lombok.Getter;
 
 @Getter
 @Setter
-public class productEntity {
-
+public class ProductEntity {
+	private int idx_product;
 	private String menu_code;
+	private String menu_sort;
     private String product_code;
     private String product_name;
     private String product_info;
@@ -22,9 +23,11 @@ public class productEntity {
     private String sale_usable;
     private String soldout_usable;
     private String product_detail;
+    private String in_date;
     
-    public productEntity(ProductDto productDto) {
+    public ProductEntity(ProductDto productDto) {
     	this.setMenu_code(productDto.getMenu_code());
+    	this.setMenu_sort(productDto.getMenu_sort());
     	this.setProduct_code(productDto.getProduct_code());
     	this.setProduct_detail(productDto.getProduct_detail());
     	this.setProduct_discount_price(productDto.getProduct_discount_price());

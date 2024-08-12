@@ -20,7 +20,7 @@
     <link rel="icon" href="/static/images/logo.png" sizes="32x32">
     <link rel="icon" href="/static/images/logo.png" sizes="16x16">
     <script src="/static/js/siteSetting.js?v=7" defer></script>
-    <script src="/static/js/common.js?v=3" defer></script>
+
 </head>
 <body>
 <%@include file="./header.jsp" %>

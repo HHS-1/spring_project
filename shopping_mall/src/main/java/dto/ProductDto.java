@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class ProductDto {
 	private String menu_code;
+	private String menu_sort;
     private String product_code;
     private String product_name;
     private String product_info;

@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,12 @@ public class SettingCategoryService {
 		return adminMapper.getCategoryMapper();
 	}
 	
-	public ResponseEntity<String> deleteCategoryService(List<String> idx_category){
+	public ResponseEntity<String> deleteCategoryService(List<String> idx_category) throws SQLIntegrityConstraintViolationException{
 		 try{
 			 adminMapper.deleteCategoryMapper(idx_category);
 			 return ResponseEntity.ok("카테고리 삭제 성공");
 		 }catch(Exception e) {
-			 return ResponseEntity.status(437).body("카테고리 삭제 실패");
+			 return ResponseEntity.status(437).body("카테고리가 등록된 상품이 있음");
 		 }
 	}
 }

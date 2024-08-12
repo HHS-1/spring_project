@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-
 public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -34,6 +33,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth){
     	try {
+    		System.out.println("configuration 작동1");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     	}catch(Exception e) {
     		System.out.println(e);
@@ -43,7 +43,9 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http)  {
+    	System.out.println("configuration 작동2");
     	try {
+    		System.out.println("configuration 작동3");
         http.httpBasic().disable()
         .csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -61,6 +63,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected AuthenticationManager authenticationManager() {
     	try {
+    		System.out.println("configuration 작동");
     		return super.authenticationManager();
     	}catch(Exception e) {
     		System.out.println(e);

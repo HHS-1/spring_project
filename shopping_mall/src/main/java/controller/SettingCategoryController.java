@@ -31,7 +31,7 @@ public class SettingCategoryController {
 	}
 	
 	@PostMapping("/admin/category/delete")
-	public ResponseEntity<String> delteCategory(@RequestBody List<String> idx_category){
+	public ResponseEntity<String> delteCategory(@RequestBody List<String> idx_category) throws Exception{
 		return settingCategoryService.deleteCategoryService(idx_category);
 	}
 	

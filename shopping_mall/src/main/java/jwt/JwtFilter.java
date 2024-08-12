@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +21,7 @@ import utility.CookieUtil;
 
 
 @Slf4j
+@Component
 public class JwtFilter extends OncePerRequestFilter {
 	@Autowired
 	private CustomUserDetailsService adminDetailsService;
@@ -30,15 +30,17 @@ public class JwtFilter extends OncePerRequestFilter {
 	
 	private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
 	
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)
 			throws ServletException, IOException {
-		
+		System.out.println("필터실행");
 		logger.info("JwtFilter is called.");
 		
 		String refreshToken = CookieUtil.getCookie(req, "refreshToken");
 		if(refreshToken == null || refreshToken.isEmpty() ||jwtUtil.isTokenExpired(refreshToken)) {
-			res.sendRedirect("/login/api");
+
+			res.sendRedirect("/admin/login");
 			return;
 		}
 		

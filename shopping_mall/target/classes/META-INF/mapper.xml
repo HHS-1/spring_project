@@ -137,15 +137,33 @@
 		SELECT * FROM product WHERE product_code = #{code}
 	</select>
 	
-	<insert id="createProductMapper" parameterType="model.productEntity">
-		INSERT INTO product VALUES('0', #{menu_code}, #{product_code}, #{product_name}, #{product_info}, 
+	<insert id="createProductMapper" parameterType="model.ProductEntity">
+		INSERT INTO product VALUES('0', #{menu_code}, #{menu_sort}, #{product_code}, #{product_name}, #{product_info}, 
 		#{product_price}, #{product_discount_rate}, #{product_discount_price}, #{product_each}, 
 		#{sale_usable}, #{soldout_usable}, #{product_detail}, now())
 	</insert>
 	
 	<insert id="saveProductImageMapper" parameterType="model.ProductFileEntity">
 		INSERT INTO product_file VALUES
-		('0', #{product_code}, #{product_image1}, #{product_image2},
-		#{product_image3},#{product_image1_name},#{product_image2_name},#{product_image3_name},now())
+		('0', #{product_code}, #{product_image1}, #{product_image1_name},
+		#{product_image2},#{product_image2_name},#{product_image3},#{product_image3_name},now())
 	</insert>
+	
+	<select id="getProductMapper" resultType="Map">
+		SELECT * FROM product
+	</select>
+	
+	<select id="getProductFilePath" resultType="Map">
+		SELECT product_image1, product_image2, product_image3 from product_file where product_code IN
+		<foreach item="product_code" collection="list" open="(" separator="," close=")">
+			#{product_code}
+		</foreach>
+	</select>
+	
+	<delete id="deleteProductMapper">
+		DELETE FROM product WHERE product_code IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{product_code}
+		</foreach>
+	</delete>
 </mapper>

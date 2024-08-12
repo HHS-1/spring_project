@@ -33,9 +33,9 @@
 	
 	<context:component-scan base-package="controller, service, model, dto, utility" />
 	
-	<context:annotation-config/>
 	<context:component-scan base-package="jwt" />
     
+	<context:annotation-config/>
     <!-- MyBatis 매퍼 스캔 -->
     <mybatis-spring:scan base-package="mybatis" />
 	

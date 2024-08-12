@@ -4,7 +4,7 @@
     <%
    	 String contextPath = request.getContextPath();
 	%>
-	
+<script src="/static/js/common.js?v=1" defer></script>
 <header class="headercss">
     <div class="header_div">
         <p><img src="<%=contextPath%>/static/images/logo.png" class="logo_sm"> ADMINISTRATOR</p>

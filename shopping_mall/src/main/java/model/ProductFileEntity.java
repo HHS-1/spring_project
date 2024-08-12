@@ -1,7 +1,5 @@
 package model;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import dto.ProductDto;
 import lombok.Getter;
 import lombok.Setter;
