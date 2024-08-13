@@ -33,7 +33,7 @@ const deleteProduct = function(){
 		.then(response =>{
 			if(response.ok){
 				location.reload();
-			}else if(response.status == 440){
+			}else {
 				alert('상품 삭제 오류');
 				return false;
 			}
@@ -48,6 +48,40 @@ const deleteProduct = function(){
 	
 }
 
+const getProductImages = function(product_code) {
+    fetch('/admin/product/getImage?code=' + product_code)
+    .then(response => {
+        if (response.ok) {
+            return response.json(); 
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(images => {
+	console.log(images);
+        /*images.forEach((imageData, index) => {
+            const preview = document.querySelector("#preview" + (index + 1));
+            const byteArray = new Uint8Array(imageData); // 서버에서 받은 이미지 데이터
+            const blob = new Blob([byteArray], { type: 'image/png' }); // 또는 'image/png', 'image/gif' 등 적절한 타입 설정
+            const url = URL.createObjectURL(blob); 
+            const img = document.createElement('img');
+            img.src = url; 
+            img.style.width = "100%";
+            img.style.height = "100%";
+            img.onerror = () => {
+                console.error('이미지를 로드할 수 없습니다: ' + url);
+            };
+            preview.innerHTML = ''; 
+            preview.appendChild(img); 
+        });*/
+    })
+    .catch(error => {
+        alert('파일을 불러올 수 없습니다: ' + error.message);
+    });
+};
+
+
+
+//btn_getImage
 document.querySelector("#btn_deleteProduct").addEventListener("click", deleteProduct);
 
 document.querySelectorAll("input[name='idx_product']").forEach(checkbox => {

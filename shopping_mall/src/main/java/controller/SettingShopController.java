@@ -23,7 +23,6 @@ public class SettingShopController {
 	@PostMapping("/admin/setting/shop/insert")
 	public ResponseEntity<String> insertSetting(@RequestBody ShopSettingDto shopSettingDto, 
 			@RequestHeader(value = "Authorization") String authorizationHeader) throws Exception{
-
 		String admin_id = commonService.authenticateUser(authorizationHeader);
 		return settingShopService.insertSettingService(shopSettingDto, admin_id);
 	}

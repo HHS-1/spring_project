@@ -115,11 +115,11 @@
 	</update>
 	
 	<insert id="createCategoryMapper" parameterType="dto.CategoryDto">
-		INSERT INTO category VALUES('0', #{sort_code}, #{menu_code}, #{menu_name}, #{category_usable}, now());
+		INSERT INTO category VALUES('0', #{admin_id}, #{sort_code}, #{menu_code}, #{menu_name}, #{category_usable}, now());
 	</insert>
 	
 	<select id="getCategoryMapper" resultType="Map">
-		SELECT idx_category,sort_code, menu_code, menu_name, category_usable FROM category ;	
+		SELECT idx_category,sort_code, menu_code, menu_name, category_usable FROM category WHERE admin_id=#{admin_id};	
 	</select>
 
 	<delete id="deleteCategoryMapper">
@@ -130,7 +130,7 @@
 	</delete>
 	
 	<select id="getCategoryMenuMapper" resultType="model.CategoryMenuEntity">
-		SELECT menu_code, menu_name FROM category;
+		SELECT menu_code, menu_name FROM category WHERE admin_id=#{id};
 	</select>
 	
 	<select id="checkCodeMapper" parameterType="String" resultType="int">
@@ -138,7 +138,7 @@
 	</select>
 	
 	<insert id="createProductMapper" parameterType="model.ProductEntity">
-		INSERT INTO product VALUES('0', #{menu_code}, #{menu_sort}, #{product_code}, #{product_name}, #{product_info}, 
+		INSERT INTO product VALUES('0', #{admin_id}, #{menu_code}, #{menu_sort}, #{product_code}, #{product_name}, #{product_info}, 
 		#{product_price}, #{product_discount_rate}, #{product_discount_price}, #{product_each}, 
 		#{sale_usable}, #{soldout_usable}, #{product_detail}, now())
 	</insert>
@@ -150,7 +150,7 @@
 	</insert>
 	
 	<select id="getProductMapper" resultType="Map">
-		SELECT * FROM product
+		SELECT * FROM product WHERE admin_id=#{id} order by idx_product desc
 	</select>
 	
 	<select id="getProductFilePath" resultType="Map">
@@ -160,10 +160,26 @@
 		</foreach>
 	</select>
 	
-	<delete id="deleteProductMapper">
-		DELETE FROM product WHERE product_code IN
-		<foreach item="idx" collection="list" open="(" separator="," close=")">
+	<select id="getProductImageMapper" resultType="String">
+		SELECT product_image1 FROM product_file WHERE product_code = #{product_code} AND product_image1 IS NOT NULL
+	    UNION ALL
+	    SELECT product_image2 FROM product_file WHERE product_code = #{product_code} AND product_image2 IS NOT NULL
+	    UNION ALL
+	    SELECT product_image3 FROM product_file WHERE product_code = #{product_code} AND product_image3 IS NOT NULL
+	</select>
+	
+	<delete id="deleteProductImageMapper">
+		DELETE FROM product_file WHERE product_code IN
+		<foreach item="product_code" collection="list" open="(" separator="," close=")">
 			#{product_code}
 		</foreach>
 	</delete>
+	
+	<delete id="deleteProductMapper">
+		DELETE FROM product WHERE product_code IN
+		<foreach item="product_code" collection="list" open="(" separator="," close=")">
+			#{product_code}
+		</foreach>
+	</delete>
+	
 </mapper>

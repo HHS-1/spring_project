@@ -38,7 +38,7 @@ public class FileUtility {
 		return fileName;
 	}
 	
-	public static void deleteFile(List<Map<String,String>> filePath) {
+	public static boolean deleteFile(List<Map<String,String>> filePath) {
 		try {
 			for(int a = 0 ; a < filePath.size(); a++) {
 				for(int b = 1 ; b <= 3 ; b++) {
@@ -48,8 +48,9 @@ public class FileUtility {
 					}
 				}
 			}
+			return true;
 		}catch(Exception e) {
-			
+			return false;
 		}
 	}
 }

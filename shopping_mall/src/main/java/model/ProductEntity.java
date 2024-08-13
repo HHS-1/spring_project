@@ -11,6 +11,7 @@ import lombok.Getter;
 @Setter
 public class ProductEntity {
 	private int idx_product;
+	private String admin_id;
 	private String menu_code;
 	private String menu_sort;
     private String product_code;
@@ -25,7 +26,8 @@ public class ProductEntity {
     private String product_detail;
     private String in_date;
     
-    public ProductEntity(ProductDto productDto) {
+    public ProductEntity(ProductDto productDto, String user_id) {
+    	this.setAdmin_id(user_id);
     	this.setMenu_code(productDto.getMenu_code());
     	this.setMenu_sort(productDto.getMenu_sort());
     	this.setProduct_code(productDto.getProduct_code());

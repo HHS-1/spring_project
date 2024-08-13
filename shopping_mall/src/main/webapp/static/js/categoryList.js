@@ -1,5 +1,11 @@
 window.onload = function(){
-	fetch('/admin/category/get')
+	const accessToken = sessionStorage.getItem("accessToken");
+	fetch('/admin/category/get',{
+		method : "GET",
+		headers : {
+			'Authorization' : `Bearer ${accessToken}`
+		}
+	})
 	.then(response=>{
 		return response.json();
 	})

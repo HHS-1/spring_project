@@ -83,7 +83,7 @@ public class CommonService {
 	}
 	
 	@ResponseBody
-	public String authenticateUser(@RequestHeader(value = "Authorization") String authorizationHeader) throws Exception {
+	public String authenticateUser(String authorizationHeader) throws Exception {
 
 	    if(authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
 	    	throw new Exception("토큰이 존재하지 않음");

@@ -23,11 +23,14 @@ public class HomeService {
 		return adminMapper.getShopSettingMapper(id);
 	}
 	
-	public List<CategoryMenuEntity> getCategoryMenuService(){
-		return adminMapper.getCategoryMenuMapper();
+	public List<CategoryMenuEntity> getCategoryMenuService(String id){
+		return adminMapper.getCategoryMenuMapper(id);
 	}
 	
-	public List<ProductEntity> getProductService(){
-		return adminMapper.getProductMapper();
+	public List<ProductEntity> getProductService(String id){
+		return adminMapper.getProductMapper(id);
 	}
+	
+
+
 }

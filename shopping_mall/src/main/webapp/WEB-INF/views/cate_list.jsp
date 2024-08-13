@@ -16,7 +16,7 @@
     <link rel="icon" href="../static/img/logo.png" sizes="64x64">
     <link rel="icon" href="../static/img/logo.png" sizes="32x32">
     <link rel="icon" href="../static/img/logo.png" sizes="16x16">
-    <script src="/static/js/categoryList.js?v=1" defer></script>
+    <script src="/static/js/categoryList.js?v=2" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import dto.CategoryDto;
+import model.CategoryEntity;
 import mybatis.AdminMapper;
 
 @Service
@@ -16,9 +17,10 @@ public class SettingCategoryService {
 	@Autowired
 	private AdminMapper adminMapper;
 	
-	public ResponseEntity<String> createCategoryService(CategoryDto categoryDto) {
+	public ResponseEntity<String> createCategoryService(CategoryDto categoryDto, String user_id) {
 		try {
-			adminMapper.createCategoryMapper(categoryDto);
+			CategoryEntity categoryEntity = new CategoryEntity(categoryDto, user_id);
+			adminMapper.createCategoryMapper(categoryEntity);
 			return ResponseEntity.ok("카테고리 저장 완료");
 		
 		}catch(Exception e) {
@@ -26,8 +28,8 @@ public class SettingCategoryService {
 		}
 	}
 	
-	public List<CategoryDto> getCategoryService(){
-		return adminMapper.getCategoryMapper();
+	public List<CategoryDto> getCategoryService(String user_id){
+		return adminMapper.getCategoryMapper(user_id);
 	}
 	
 	public ResponseEntity<String> deleteCategoryService(List<String> idx_category) throws SQLIntegrityConstraintViolationException{

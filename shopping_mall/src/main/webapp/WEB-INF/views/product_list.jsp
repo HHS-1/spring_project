@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/product.css?v=5">
+    <link rel="stylesheet" type="text/css" href="/static/css/product.css?v=6">
     <link rel="icon" href="/static/img/logo.png" sizes="128x128">
     <link rel="icon" href="/static/img/logo.png" sizes="64x64">
     <link rel="icon" href="/static/img/logo.png" sizes="32x32">
     <link rel="icon" href="/static/img/logo.png" sizes="16x16">
-    <script src="/static/js/productList.js" defer></script>
+    <script src="/static/js/uploadFile.js" defer></script>
+    <script src="/static/js/productList.js?v=1" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
@@ -35,11 +36,16 @@
         </form>
     </span>
 </div>
+<div class="image_box">
+	<div class="upload_box">
+		<%@include file="./upload_box.jsp"%>
+	</div>
+</div>
 <div class="subpage_view2">
     <ul>
         <li><input id="checkAll" type="checkbox"></li>
-        <li>코드</li>
-        <li>이미지</li>
+        <li>상품코드</li>
+        <li>상품 이미지</li>
         <li>상품명</li>
         <li>카테고리 분류</li>
         <li>판매가격</li>
@@ -54,15 +60,15 @@
     <ul>
         <li><input name="product_code" type="checkbox" value="${products.product_code}"></li>
         <li>${products.product_code}</li>
-        <li>이미지</li>
+        <li><input class="btn_getImage" type="button" value="상품 이미지" onclick="getProductImages(${products.product_code})"></li>
         <li>${products.product_name}</li>
         <li>${products.menu_sort}</li>
         <li>${products.product_price}</li>
         <li>${products.product_discount_price}</li>
         <li>${products.product_discount_rate}</li>
         <li>${products.product_each}</li>
-        <li>${products.product_sale_usable}</li>
-        <li>${products.product_soldout_usable}</li>
+        <li>${products.sale_usable}</li>
+        <li>${products.soldout_usable}</li>
         <li>관리</li>
     </ul>
     </c:forEach>
@@ -85,7 +91,7 @@
     <input type="button" id="btn_deleteProduct" value="선택상품 삭제" title="선택상품 삭제" class="p_button">
     <span style="float: right;">
     <input type="button" value="신규상품 등록" title="신규상품 등록" class="p_button p_button_color1" onclick="location.href='/admin/product/add';">
-    <input type="button" value="카테고리 등록" title="카테고리 관리" onclick="location.href='/admin/category';" class="p_button p_button_color2">
+    <input type="button" value="카테고리 관리" title="카테고리 관리" onclick="location.href='/admin/category';" class="p_button p_button_color2">
     </span>
 </div>
 </section>
