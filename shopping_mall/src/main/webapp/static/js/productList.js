@@ -49,6 +49,11 @@ const deleteProduct = function(){
 }
 
 const getProductImages = function(product_code) {
+	for(let a = 1 ; a < 4 ; a++){ // preview 버그 방지 초기화
+		const preview = document.querySelector("#preview" + a);
+		preview.innerHTML = '';
+	}
+	
     fetch('/admin/product/getImage?code=' + product_code)
     .then(response => {
         if (response.ok) {
@@ -57,22 +62,29 @@ const getProductImages = function(product_code) {
         throw new Error('Network response was not ok.');
     })
     .then(images => {
-	console.log(images);
-        /*images.forEach((imageData, index) => {
-            const preview = document.querySelector("#preview" + (index + 1));
-            const byteArray = new Uint8Array(imageData); // 서버에서 받은 이미지 데이터
-            const blob = new Blob([byteArray], { type: 'image/png' }); // 또는 'image/png', 'image/gif' 등 적절한 타입 설정
-            const url = URL.createObjectURL(blob); 
-            const img = document.createElement('img');
-            img.src = url; 
-            img.style.width = "100%";
+		images.forEach((image, index)=>{
+			const preview = document.querySelector("#preview" + (index + 1));
+			const imageName = image.split("/").pop();
+			const img = document.createElement('img');
+			img.src='/admin/images/'+imageName;
+			img.style.width = "100%";
             img.style.height = "100%";
-            img.onerror = () => {
-                console.error('이미지를 로드할 수 없습니다: ' + url);
-            };
-            preview.innerHTML = ''; 
+			preview.innerHTML = ''; 
             preview.appendChild(img); 
-        });*/
+			
+			img.addEventListener('click', ()=>{
+				const imagePopup = document.querySelector("#imagePopup");
+				const modalImage = document.querySelector("#modalImage");
+				imagePopup.style.display="block";
+				modalImage.src = img.src;
+				modalImage.style.width = "100%";
+				modalImage.style.height = "100%";
+				
+			})
+		});
+		
+		document.querySelector("#image_box").style.display = 'flex';
+		document.querySelector("#modal").style.display = 'block';
     })
     .catch(error => {
         alert('파일을 불러올 수 없습니다: ' + error.message);
@@ -80,8 +92,17 @@ const getProductImages = function(product_code) {
 };
 
 
+document.querySelector("#closeModal").addEventListener("click",()=>{
+	document.querySelector("#imagePopup").style.display = "none";
+})
 
-//btn_getImage
+//모달창, 이미지 팝업 닫기
+document.querySelector("#modal").addEventListener("click", function(){
+	this.style.display = "none";
+	document.querySelector("#image_box").style.display = "none";
+	document.querySelector("#imagePopup").style.display = "none";
+})
+
 document.querySelector("#btn_deleteProduct").addEventListener("click", deleteProduct);
 
 document.querySelectorAll("input[name='idx_product']").forEach(checkbox => {

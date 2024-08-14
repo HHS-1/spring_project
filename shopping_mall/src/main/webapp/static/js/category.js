@@ -19,6 +19,9 @@ const addCategory = function(){
 		if(response.ok){
 			alert('생성이 완료되었습니다.');
 			location.reload();
+		}else if(response.status = 436){
+			alert('대메뉴코드가 중복됩니다');
+			return false;
 		}
 	})
 	.catch(error=>{

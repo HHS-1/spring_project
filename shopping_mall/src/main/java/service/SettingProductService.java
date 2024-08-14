@@ -97,9 +97,9 @@ public class SettingProductService {
                     .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
                     .body(resource);
 		}catch(Exception e) {
-			
+			return ResponseEntity.status(441).build();
 		}
 		
-		return null;
+
 	}
 }

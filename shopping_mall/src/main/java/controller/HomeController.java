@@ -78,6 +78,7 @@ public class HomeController {
     public String categoryPage(Model model, HttpServletRequest req) {
     	String id = commonService.verify(req, model);
 	    if(id.startsWith("redirect:") || id.equals("403")) return id;
+	    model.addAttribute("dataLength", homeService.getCategoryCount(id));
 	    return "cate_list";
     }
     

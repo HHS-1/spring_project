@@ -119,7 +119,11 @@
 	</insert>
 	
 	<select id="getCategoryMapper" resultType="Map">
-		SELECT idx_category,sort_code, menu_code, menu_name, category_usable FROM category WHERE admin_id=#{admin_id};	
+		SELECT idx_category,sort_code, menu_code, menu_name, category_usable 
+		FROM category 
+		WHERE admin_id = #{admin_id}
+		ORDER BY idx_category desc
+		LIMIT #{firstIndex}, #{pagingNumber}
 	</select>
 
 	<delete id="deleteCategoryMapper">
@@ -182,4 +186,7 @@
 		</foreach>
 	</delete>
 	
+	<select id="getCategoryCountMapper" resultType="int">
+		SELECT COUNT(*) FROM category WHERE admin_id=#{id}
+	</select>
 </mapper>

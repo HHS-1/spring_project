@@ -13,6 +13,7 @@ import model.AdminEntity;
 import model.AllSettingEntity;
 import model.CategoryEntity;
 import model.CategoryMenuEntity;
+import model.PagingEntity;
 import model.ProductFileEntity;
 import model.SettingCompanyEntity;
 import model.SettingPaymentEntity;
@@ -37,7 +38,7 @@ public interface AdminMapper {
 	int savePaymentSettingMapper(SettingPaymentEntity settingPaymentEntity);
 	
 	int createCategoryMapper(CategoryEntity categoryEntity);
-	List<CategoryDto> getCategoryMapper(String user_id);
+	List<CategoryDto> getCategoryMapper(PagingEntity pagingEntity);
 	int deleteCategoryMapper(List<String> idx_category);
 	List<CategoryMenuEntity> getCategoryMenuMapper(String id);
 	int checkCodeMapper(String code);
@@ -53,4 +54,5 @@ public interface AdminMapper {
 	int deleteProductImageMapper(List<String> product_code);
 	int deleteProductMapper(List<String> product_code);
 	
+	int getCategoryCountMapper(String id);
 }

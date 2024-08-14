@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,9 +33,9 @@ public class SettingCategoryController {
 	
 	@GetMapping("/admin/category/get")
 	@ResponseBody
-	public List<CategoryDto> getCategory(@RequestHeader(value = "Authorization") String authorizationHeader) throws Exception{
+	public List<CategoryDto> getCategory(@RequestHeader(value = "Authorization") String authorizationHeader, String page, Model model) throws Exception{
 		String user_id = commonService.authenticateUser(authorizationHeader);
-		return settingCategoryService.getCategoryService(user_id);
+		return settingCategoryService.getCategoryService(user_id, page);
 	}
 	
 	@PostMapping("/admin/category/delete")

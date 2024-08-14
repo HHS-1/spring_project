@@ -11,12 +11,12 @@
     <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/category.css?v=7">
+    <link rel="stylesheet" type="text/css" href="/static/css/category.css?v=9">
     <link rel="icon" href="../static/img/logo.png" sizes="128x128">
     <link rel="icon" href="../static/img/logo.png" sizes="64x64">
     <link rel="icon" href="../static/img/logo.png" sizes="32x32">
     <link rel="icon" href="../static/img/logo.png" sizes="16x16">
-    <script src="/static/js/categoryList.js?v=2" defer></script>
+    <script src="/static/js/categoryList.js?v=4" defer></script>
 </head>
 <body>
 <%@include file="./header.jsp" %>
@@ -37,26 +37,17 @@
     </span>
 </div>
 <div id="category_table" class="subpage_view2">
-    <ul>
-        <li><input id="checkAll" type="checkbox"></li>
-        <li>분류코드</li>
-        <li>대메뉴 코드</li>
-        <li>대메뉴명</li>
-        <li>소메뉴 코드(사용안함)</li>
-        <li>소메뉴명(사용안함)</li>
-        <li>사용 유/무</li>
-        <li>관리</li>
-    </ul>
+    
+
    
-    <ul id="none_category">
-        <li style="width: 100%;">등록된 카테고리가 없습니다.</li>
-    </ul>
 </div>
 <div class="subpage_view3">
     <ul class="pageing">
         <li><img src="/static/ico/double_left.svg"></li>
         <li><img src="/static/ico/left.svg"></li>
-        <li>1</li>
+        <c:forEach var="pageNumber" begin="1" end="${dataLength/5 + 1}">
+        <li class="page" onclick="paging(${pageNumber})">${pageNumber}</li>
+		</c:forEach>
         <li><img src="/static/ico/right.svg"></li>
         <li><img src="/static/ico/double_right.svg"></li>
     </ul>

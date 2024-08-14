@@ -10,15 +10,20 @@
     <link rel="stylesheet" type="text/css" href="/static/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login.css?v=1">
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/product.css?v=6">
+    <link rel="stylesheet" type="text/css" href="/static/css/product.css?v=8">
     <link rel="icon" href="/static/img/logo.png" sizes="128x128">
     <link rel="icon" href="/static/img/logo.png" sizes="64x64">
     <link rel="icon" href="/static/img/logo.png" sizes="32x32">
     <link rel="icon" href="/static/img/logo.png" sizes="16x16">
-    <script src="/static/js/uploadFile.js" defer></script>
-    <script src="/static/js/productList.js?v=1" defer></script>
+
+    <script src="/static/js/productList.js?v=2" defer></script>
 </head>
 <body>
+<div id="modal" class="modal"></div>
+<div id="imagePopup">
+	<span id="closeModal" class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
 <%@include file="./header.jsp" %>
 <main class="maincss">
 <section>
@@ -36,7 +41,7 @@
         </form>
     </span>
 </div>
-<div class="image_box">
+<div id="image_box" class="image_box">
 	<div class="upload_box">
 		<%@include file="./upload_box.jsp"%>
 	</div>

@@ -34,10 +34,14 @@
                 <input id="menu_code" type="text" class="cate_input2">
                 <select id="lg_menu" class="dropdown-select">
                 	<option selected disabled>선택하세요</option>
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
+                    <c:forEach var="num" begin="1" end="20">
+                    <c:if test="${num<10}">
+                    <option>0${num}</option>
+                    </c:if>
+                    <c:if test="${num>=10}">
+                    <option>${num}</option>
+                    </c:if>
+                    </c:forEach>
                 </select>
                 <span class="arrow">&#9662;</span>
             </li>

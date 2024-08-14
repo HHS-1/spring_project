@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import dto.CategoryDto;
 import model.CategoryEntity;
+import model.PagingEntity;
 import mybatis.AdminMapper;
 
 @Service
@@ -28,8 +29,12 @@ public class SettingCategoryService {
 		}
 	}
 	
-	public List<CategoryDto> getCategoryService(String user_id){
-		return adminMapper.getCategoryMapper(user_id);
+	public List<CategoryDto> getCategoryService(String user_id, String page){
+		int firstIndex = ((Integer.valueOf(page))-1)*5;
+		final int pagingNumber = 5;
+		PagingEntity pagingEntity = new PagingEntity(user_id, firstIndex, pagingNumber);
+			
+		return adminMapper.getCategoryMapper(pagingEntity);
 	}
 	
 	public ResponseEntity<String> deleteCategoryService(List<String> idx_category) throws SQLIntegrityConstraintViolationException{

@@ -53,7 +53,7 @@ public class SettingProductController {
 		return settingProductService.getProductImageService(code);
 	}
 	
-	@GetMapping("/admin/images/{filename}") // 파일 전달
+	@GetMapping("/admin/images/{filename}") // 파일 전달 api
 	public ResponseEntity<Resource> serveFileController(@PathVariable String filename) {
        return settingProductService.serveFileService(filename);
     }

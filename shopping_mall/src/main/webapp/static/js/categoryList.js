@@ -1,6 +1,10 @@
 window.onload = function(){
+	paging(1);
+}
+
+const paging = function(page){
 	const accessToken = sessionStorage.getItem("accessToken");
-	fetch('/admin/category/get',{
+	fetch('/admin/category/get?page='+page,{
 		method : "GET",
 		headers : {
 			'Authorization' : `Bearer ${accessToken}`
@@ -11,10 +15,31 @@ window.onload = function(){
 	})
 	.then(data=>{
 		
-		if(data != "") document.querySelector("#none_category").style.display = "none";
 		
-		
+
 		const category_table = document.querySelector("#category_table");
+		category_table.innerHTML = ''; // 테이블 초기화
+
+        // 헤더 추가
+        const header = `
+            <ul>
+                <li><input id="checkAll" type="checkbox"></li>
+                <li>분류코드</li>
+                <li>대메뉴 코드</li>
+                <li>대메뉴명</li>
+                <li>소메뉴 코드(사용안함)</li>
+                <li>소메뉴명(사용안함)</li>
+                <li>사용 유/무</li>
+                <li>관리</li>
+            </ul>
+			<ul id="none_category">
+		       <li style="width: 100%;">등록된 카테고리가 없습니다.</li>
+		    </ul>
+        `;
+        category_table.innerHTML += header;
+	
+		if(data != "") document.querySelector("#none_category").style.display = "none";
+
 		data.forEach(data=>{
 			const category_list = document.createElement('ul');
 			category_list.innerHTML = `
@@ -31,8 +56,12 @@ window.onload = function(){
             <li><input type="text" class="item-input" value="${data.category_usable}" readonly></li>
             <li>[수정]</li>
         `;
-		category_table.appendChild(category_list);
+			category_table.appendChild(category_list);
 		})
+		
+		document.querySelector("#checkAll").addEventListener('click', function(){
+			allCheck(this);
+		});
 		
 		document.querySelectorAll("input[name='idx_category']").forEach(checkbox => {
     		checkbox.addEventListener('change', checkboxUpdate);
@@ -92,10 +121,5 @@ const checkboxUpdate = function(){
 
 
 
-
-
-document.querySelector("#checkAll").addEventListener('click', function(){
-	allCheck(this);
-});
 document.querySelector("#btn_delete").addEventListener('click', delete_category);
 

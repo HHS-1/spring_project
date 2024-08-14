@@ -31,6 +31,10 @@ public class HomeService {
 		return adminMapper.getProductMapper(id);
 	}
 	
+	public int getCategoryCount(String id) {
+		return adminMapper.getCategoryCountMapper(id);
+	}
+	
 
 
 }
