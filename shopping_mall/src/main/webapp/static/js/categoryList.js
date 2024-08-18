@@ -1,10 +1,41 @@
-window.onload = function(){
-	paging(1);
-}
 
-const paging = function(page){
+
+window.onload = function(){
+	paging(1,"");
+	pagingBar("");
+}
+const pagingBar = function(search){
 	const accessToken = sessionStorage.getItem("accessToken");
-	fetch('/admin/category/get?page='+page,{
+	fetch('/admin/category/count?search='+search,{
+		method : "GET",
+		headers : {
+			'Authorization' : `Bearer ${accessToken}`
+		}
+	})
+	.then(response=>{
+		if(response.ok) return response.json();
+	})
+	.then(categoryCount=>{
+		const paging_bar = document.querySelector("#paging_bar");
+		const pageLength = Math.ceil(categoryCount / 5);
+		let pageLinks = '';
+		for (let a = 1; a <= pageLength; a++) {
+		    pageLinks += `<li class="page" onclick="paging(${a},'${search}')">${a}</li>`;
+		}
+		
+		paging_bar.innerHTML = `
+			<li><img src="/static/ico/double_left.svg"></li>
+	        <li><img src="/static/ico/left.svg"></li>
+	       	${pageLinks}
+	        <li><img src="/static/ico/right.svg"></li>
+	        <li><img src="/static/ico/double_right.svg"></li>
+		`;
+	})
+
+}
+const paging = function(page, search){
+	const accessToken = sessionStorage.getItem("accessToken");
+	fetch('/admin/category/get?page='+page+'&search='+search,{
 		method : "GET",
 		headers : {
 			'Authorization' : `Bearer ${accessToken}`
@@ -14,9 +45,6 @@ const paging = function(page){
 		return response.json();
 	})
 	.then(data=>{
-		
-		
-
 		const category_table = document.querySelector("#category_table");
 		category_table.innerHTML = ''; // 테이블 초기화
 
@@ -26,7 +54,7 @@ const paging = function(page){
                 <li><input id="checkAll" type="checkbox"></li>
                 <li>분류코드</li>
                 <li>대메뉴 코드</li>
-                <li>대메뉴명</li>
+                <li>카테고리명</li>
                 <li>소메뉴 코드(사용안함)</li>
                 <li>소메뉴명(사용안함)</li>
                 <li>사용 유/무</li>
@@ -58,6 +86,9 @@ const paging = function(page){
         `;
 			category_table.appendChild(category_list);
 		})
+		
+		
+		
 		
 		document.querySelector("#checkAll").addEventListener('click', function(){
 			allCheck(this);
@@ -120,6 +151,10 @@ const checkboxUpdate = function(){
 }
 
 
-
+document.querySelector("#searchForm").addEventListener('submit', function(event) {
+    event.preventDefault();
+    paging(1, document.querySelector("#searchWord").value);
+    pagingBar(document.querySelector("#searchWord").value);
+});
 document.querySelector("#btn_delete").addEventListener('click', delete_category);
 

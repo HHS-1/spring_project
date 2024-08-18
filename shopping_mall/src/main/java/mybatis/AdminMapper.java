@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import dto.AdminPermissionDto;
 import dto.CategoryDto;
@@ -54,5 +55,5 @@ public interface AdminMapper {
 	int deleteProductImageMapper(List<String> product_code);
 	int deleteProductMapper(List<String> product_code);
 	
-	int getCategoryCountMapper(String id);
+	int getCategoryCountMapper(@Param("id") String id, @Param("search") String search);
 }

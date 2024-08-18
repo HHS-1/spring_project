@@ -29,11 +29,14 @@ public class SettingCategoryService {
 		}
 	}
 	
-	public List<CategoryDto> getCategoryService(String user_id, String page){
+	public ResponseEntity<Integer> getCategoryCountService(String user_id, String search) {
+		return ResponseEntity.ok(adminMapper.getCategoryCountMapper(user_id, search));
+	}
+	
+	public List<CategoryDto> getCategoryService(String user_id, String page, String search){
 		int firstIndex = ((Integer.valueOf(page))-1)*5;
 		final int pagingNumber = 5;
-		PagingEntity pagingEntity = new PagingEntity(user_id, firstIndex, pagingNumber);
-			
+		PagingEntity pagingEntity = new PagingEntity(user_id, firstIndex, pagingNumber, search);
 		return adminMapper.getCategoryMapper(pagingEntity);
 	}
 	

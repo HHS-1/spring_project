@@ -31,11 +31,18 @@ public class SettingCategoryController {
 		return settingCategoryService.createCategoryService(categoryDto, user_id);
 	}
 	
+	@GetMapping("/admin/category/count")
+	public ResponseEntity<Integer> getCategoryCount(@RequestHeader(value = "Authorization") String authorizationHeader, String search) throws Exception {
+		String user_id = commonService.authenticateUser(authorizationHeader);
+		return settingCategoryService.getCategoryCountService(user_id, search);
+	}
+	
 	@GetMapping("/admin/category/get")
 	@ResponseBody
-	public List<CategoryDto> getCategory(@RequestHeader(value = "Authorization") String authorizationHeader, String page, Model model) throws Exception{
+	public List<CategoryDto> getCategory(@RequestHeader(value = "Authorization") String authorizationHeader, String page, String search, Model model) throws Exception{
 		String user_id = commonService.authenticateUser(authorizationHeader);
-		return settingCategoryService.getCategoryService(user_id, page);
+		
+		return settingCategoryService.getCategoryService(user_id, page, search);
 	}
 	
 	@PostMapping("/admin/category/delete")
